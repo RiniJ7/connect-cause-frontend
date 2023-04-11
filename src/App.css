@@ -34,9 +34,13 @@
 }
 
 .card {
-  padding: 2em;
+  padding: 0.2em;
+  text-align: right;
+  background-color: #d86187;
+  border: 1px solid white;
+  flex: 1;
 }
 
 .read-the-docs {
-  color: #888;
+  color: hsl(0, 56%, 94%);
 }
