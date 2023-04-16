@@ -6,10 +6,10 @@ import "./App.css";
 //import SignUp from './Components/SignUp'
 //import SignIn from './Components/SignIn'
 const volunteerSignupTestObject = {
-    first_name: "Bob",
-    last_name: "Scheider",
-    username: "bobbie",
-    email: "bobbob9000@gmail.com",
+    first_name: "Test",
+    last_name: "Lastname",
+    username: "tester",
+    email: "test@gmail.com",
     password: "notsecurepassword",
 };
 // console.log(JSON.stringify(volunteerSignupTestObject));
@@ -17,7 +17,7 @@ function App() {
     const [volunteer, setVolunteer] = useState([]);
 
     const signUpVolunteer = async () => {
-        const response = await fetch("api/authenticate/volunteer/signup", {
+        const response = await fetch("api/authenticate/signup/volunteer", {
             headers: {
                 "Content-Type": "application/json",
                 Accept: "application/json",
