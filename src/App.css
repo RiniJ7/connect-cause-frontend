@@ -36,7 +36,7 @@
 .card {
   padding: 0.2em;
   text-align: right;
-  background-color: #d86187;
+  background-color: rgb(124, 227, 181);
   border: 1px solid white;
   flex: 1;
 }
