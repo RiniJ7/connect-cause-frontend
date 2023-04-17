@@ -1,32 +1,29 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 import Header from "./Components/header/Header.jsx";
 import Footer from "./Components/footer/Footer.jsx";
+import Body from "./Components/body/Body.jsx";
 
 function App() {
-  
-  return (
-    <div className="App">
-      <div >
-      <Header title= "Connect Cause Calgary" subtitle = "Your next voluteering opportunity is here.." choice1 = " LogOut" choice2 = "Home"/>
-      </div>
-      
-<div className="card">
-<button><h3>Sign-In</h3></button>
-</div>
+    const [volunteer, setVolunteer] = useState([]);
 
-<div className="card">
-<button><h3>Sign-Up</h3></button>
-</div>
+    return (
+        <div className="App">
+            {/* Header  */}
+            <div>
+                <Header title="Connect Cause Calgary" subtitle="Your next voluteering opportunity is here.." choice1=" LogOut" choice2="Home" />
+            </div>
 
-<p className="logo">About Us: How we help you! etc etc</p>
+            {/* Body */}
 
-<div>
-  <Footer note="Copyrights @ Witty Web Wizards" />
-</div>     
-  </div>
-  
- )
+            <Body signin="Sign In" signup="Sign Up" />
+
+            {/* Footer */}
+            <div>
+                <Footer note="Copyrights @ Witty Web Wizards" />
+            </div>
+        </div>
+    );
 }
 
-export default App
+export default App;
