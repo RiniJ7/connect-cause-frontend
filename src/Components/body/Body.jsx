@@ -11,7 +11,7 @@ export default function Header(props) {
             <>
                 <Routes>
                     <Route path="/home" element={<p></p>} />
-                    {signupSelected == true && <Route path="/" element={<Signupform />} />}
+                    {signupSelected == true && <Route path="/" element={<Signupform title="Sign Up Today" />} />}
                 </Routes>
                 {/* <button>{props.signin}</button> */}
                 <button

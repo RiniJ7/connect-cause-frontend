@@ -3,15 +3,15 @@ import "./Signupform.css";
 
 export function Signupform(props) {
     const [errorMessage, setErrorMessage] = useState();
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [first_name, setFirstName] = useState("");
+    const [last_name, setLastName] = useState("");
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const volunteer = {
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         username,
         email,
         password,
@@ -24,7 +24,6 @@ export function Signupform(props) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Accept: "application/json",
                 },
                 body: JSON.stringify(volunteer),
             });
@@ -43,7 +42,7 @@ export function Signupform(props) {
 
     return (
         <div className="header">
-            <h1>{props.title}</h1>
+            <h3>{props.title}</h3>
             <form onSubmit={signUpVolunteer}>
                 <label>First Name:</label>
                 <input onChange={(event) => setFirstName(event.target.value)} />
