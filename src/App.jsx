@@ -27,9 +27,7 @@ function App() {
             body: JSON.stringify(volunteerSignupTestObject),
         });
         const volunteerData = await response.json();
-        //console.log(superheroData);
         setVolunteer(volunteerData);
-        //console.log(superheroList); // this won't show anything - state hasn't been rerendered
     };
     // console.log(volunteer);
     return (
