@@ -5,10 +5,11 @@ export default function Signupform(props) {
   return (
     <div className="header">
       <h1>{props.title}</h1>
+      <button className="button">{props.firstname}</button>
+      <button className="button">{props.lastname}</button>
+      <button className="button">{props.username}</button>
       <button className="button">{props.email}</button>
-      <button className="button">{props.password1}</button>
-      <button className="button">{props.password2}</button>
-      <button className="button">{props.confirm}</button>     
+      <button className="button">{props.password}</button>      
     </div>
   );
 }
