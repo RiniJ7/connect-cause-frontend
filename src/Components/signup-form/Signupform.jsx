@@ -57,7 +57,7 @@ export function Signupform(props) {
                 <input onChange={(event) => setPassword(event.target.value)} />
 
                 <input type="submit" title="submit" />
-                {error && <p style={{ color: "red" }}>{errorMessage}</p>}
+                {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </form>
 
             {/* <button className="button">{props.firstname}</button>
