@@ -6,19 +6,19 @@ import { useState } from "react";
 
 export default function Header(props) {
     const [signupSelected, setSignupSelected] = useState([false]);
+    const [loggedInToken, setLoggedInToken] = useState("");
+
     return (
         <div className="body">
             <>
                 <Routes>
                     <Route path="/home" element={<p></p>} />
-                    {signupSelected == true && <Route path="/" element={<Signupform title="Sign Up Today" />} />}
+                    {signupSelected == true && <Route path="/" element={<Signupform setLoggedInToken={setLoggedInToken} title="Sign Up Today" />} />}
                 </Routes>
                 {/* <button>{props.signin}</button> */}
                 <button
                     onClick={() => {
-                        console.log("clicked it!");
                         setSignupSelected(!signupSelected);
-                        console.log(typeof signupSelected);
                     }}
                 >
                     {props.signup}
