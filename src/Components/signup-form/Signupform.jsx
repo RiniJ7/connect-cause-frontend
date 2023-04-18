@@ -3,16 +3,14 @@ import "./Signupform.css";
 
 export function Signupform(props) {
     const [errorMessage, setErrorMessage] = useState();
-    const [first_name, setFirstName] = useState("");
-    const [last_name, setLastName] = useState("");
-    const [username, setUsername] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const volunteer = {
-        first_name,
-        last_name,
-        username,
+        firstName,
+        lastName,
         email,
         password,
     };
@@ -34,6 +32,7 @@ export function Signupform(props) {
             } else {
                 const volunteerData = await response.json();
                 console.log("response data is: ", volunteerData);
+                props.loggedInToken(volunteerData.token);
             }
         } catch (error) {
             console.log(error.message);
@@ -48,8 +47,6 @@ export function Signupform(props) {
                 <input onChange={(event) => setFirstName(event.target.value)} />
                 <label>Last Name:</label>
                 <input onChange={(event) => setLastName(event.target.value)} />
-                <label>Username:</label>
-                <input onChange={(event) => setUsername(event.target.value)} />
                 <label>Email:</label>
                 <input onChange={(event) => setEmail(event.target.value)} />
                 <label>Password:</label>
@@ -58,12 +55,6 @@ export function Signupform(props) {
                 <input type="submit" title="submit" />
                 {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
             </form>
-
-            {/* <button className="button">{props.firstname}</button>
-            <button className="button">{props.lastname}</button>
-            <button className="button">{props.username}</button>
-            <button className="button">{props.email}</button>
-            <button className="button">{props.password}</button> */}
         </div>
     );
 }
