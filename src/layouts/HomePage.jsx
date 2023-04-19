@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { Signupform } from "../components/Signupform.jsx";
+import { Signinform } from "../components/Signinform.jsx";
 import { useState } from "react";
 import { Button, ButtonGroup, Stack } from "@mui/material";
 
@@ -8,7 +9,7 @@ import "../styles/App.css";
 
 export default function HomePage(props) {
     const [signupSelected, setSignupSelected] = useState([false]);
-    const [loggedInToken, setLoggedInToken] = useState("");
+    const [signinSelected, setSigninSelected] = useState([false]);
 
     let [ButtonName1, setButtonName1] = useState("");
     let [ButtonName2, setButtonName2] = useState("");
@@ -23,7 +24,7 @@ export default function HomePage(props) {
                     {/* <Button>{props.signin}</Button> */}
                     <Button
                         onClick={() => {
-                            setSignupSelected(!signupSelected);
+                            setSigninSelected(!signinSelected);
                         }}
                     >
                         {ButtonName1}
@@ -36,6 +37,9 @@ export default function HomePage(props) {
                         {ButtonName2}
                     </Button>
                     <Routes>
+                        <Route path="/home" element={<p></p>} />
+                        {signinSelected == true && <Route path="/" element={<Signinform setLoggedInToken={setLoggedInToken} title="Sign In" />} />}
+
                         <Route path="/home" element={<p></p>} />
                         {signupSelected == true && <Route path="/" element={<Signupform setLoggedInToken={setLoggedInToken} title="Sign Up Today" />} />}
                     </Routes>

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../styles/App.css";
+import { Button, ButtonGroup, Stack } from "@mui/material";
 
 export function Signupform(props) {
-    const [errorMessage, setErrorMessage] = useState();
+    const [errorMessage, setErrorMessage] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -40,7 +41,7 @@ export function Signupform(props) {
     };
 
     return (
-        <div className="signup-container">
+        <div className="form-container">
             <h3>{props.title}</h3>
             <form className="form" onSubmit={signUpVolunteer}>
                 <div className="form-group">
@@ -81,7 +82,9 @@ export function Signupform(props) {
                     />
                 </div>
                 <div className="form-group">
-                    <button className="form-submit-btn" type="submit" title="submit" />
+                    <Button className="form-submit-btn" type="submit" title="submit">
+                        Sign Up
+                    </Button>
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                 </div>
             </form>

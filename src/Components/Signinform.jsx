@@ -1,51 +1,66 @@
-import React, { useState } from "react"; 
-import "./Signinform.css";
+import React, { useState } from "react";
+// import "./Signinform.css";
+import { Button, ButtonGroup, Stack } from "@mui/material";
 
 export function Signinform(props) {
-  const [errorMessage, setErrorMessage] = useState();
-  const [usernameOrEmail, setUsernameOrEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
-  const signIn = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch("api/authenticate/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          usernameOrEmail,
-          password,
-        }),
-      });
-      if (!response.ok) {
-        console.log("You encountered an error");
-        const error = await response.json();
-        setErrorMessage(error.message);
-      } else {
-        const userData = await response.json();
-        console.log("response data is: ", userData);
-      }
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    const volunteer = {
+        email,
+        password,
+    };
 
-  return (
-    <div className="header">
-      <h3>{props.title}</h3>
-      <form onSubmit={signIn}>
-        <label>Username or Email:</label>
-        <input
-          onChange={(event) => setUsernameOrEmail(event.target.value)}
-        />
-        <label>Password:</label>
-        <input onChange={(event) => setPassword(event.target.value)} />
+    const signInVolunteer = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch("api/authenticate/signin/volunteer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(volunteer),
+            });
+            if (!response.ok) {
+                console.log("You encountered an error");
+                const error = await response.json();
+                setErrorMessage(error.message);
+            } else {
+                const userData = await response.json();
+                console.log("response data is: ", userData);
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
-        <input type="submit" value="Log In" />
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      </form>
-    </div>
-  );
+    return (
+        <div className="form-container">
+            <h3>{props.title}</h3>
+            <form className="form" onSubmit={signInVolunteer}>
+                <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" placeholder="Enter your email" name="email" required onChange={(event) => setEmail(event.target.value)} />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="text"
+                        id="password"
+                        placeholder="Enter a password"
+                        name="password"
+                        required
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <Button className="form-submit-btn" type="submit" title="submit">
+                        Sign In
+                    </Button>
+                    {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+                </div>
+            </form>
+        </div>
+    );
 }
