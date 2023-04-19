@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./App.css";
-import Header from "./Components/header/Header.jsx";
-import Footer from "./Components/footer/Footer.jsx";
-import Body from "./Components/body/Body.jsx";
+import "../src/styles/App.css";
+import Header from "./Components/page-structure/Header.jsx";
+import Footer from "./Components/page-structure/Footer.jsx";
+import Body from "./Components/page-structure/Body.jsx";
 
 function App() {
     const [volunteer, setVolunteer] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Signupform.css";
+import "../../styles/Signupform.css";
 
 export function Signupform(props) {
     const [errorMessage, setErrorMessage] = useState();
