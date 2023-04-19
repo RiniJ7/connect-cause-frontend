@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../src/styles/App.css";
 import "../src/index.css";
 import Header from "./layouts/Header.jsx";
@@ -7,6 +7,18 @@ import HomePage from "./layouts/HomePage.jsx";
 
 function App() {
     const [volunteer, setVolunteer] = useState([]);
+    const [loggedInToken, setLoggedInToken] = useState("");
+    // ///// an example
+    //     useEffect(() => {
+    //         async function getSuperheroes() {
+    //           const response = await fetch(`/api/superhero/${id}`);
+    //           const superheroData = await response.json();
+    //           console.log(superheroData);
+    //           setSuperhero(superheroData);
+    //         }
+    //         getSuperheroes();
+    //       }, []);
+    // /////
 
     return (
         <div>
