@@ -1,26 +1,24 @@
 import { useState } from "react";
-import "./App.css";
-import Header from "./Components/header/Header.jsx";
-import Footer from "./Components/footer/Footer.jsx";
-import Body from "./Components/body/Body.jsx";
+import "../src/styles/App.css";
+import "../src/index.css";
+import Header from "./layouts/Header.jsx";
+import Footer from "./layouts/Footer.jsx";
+import HomePage from "./layouts/HomePage.jsx";
 
 function App() {
     const [volunteer, setVolunteer] = useState([]);
 
     return (
-        <div className="App">
-            {/* Header  */}
-            <div>
-                <Header title="Connect Cause Calgary" subtitle="Your next voluteering opportunity is here.." choice1=" LogOut" choice2="Home" />
+        <div>
+            <div className="head">
+                <Header title="Connect Cause Calgary" subtitle="Your next volunteering opportunity is here.." choice1=" LogOut" choice2="Home" />
             </div>
-
-            {/* Body */}
-
-            <Body signin="Sign In" signup="Sign Up" />
-
-            {/* Footer */}
-            <div>
-                <Footer note="Copyrights @ Witty Web Wizards" />
+            <div className="body">
+                <HomePage />
+                {/* need to put a router here to change content of "div tag" to load new pages  */}
+            </div>
+            <div className="footer">
+                <Footer />
             </div>
         </div>
     );
