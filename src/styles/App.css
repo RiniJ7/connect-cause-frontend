@@ -1,56 +1,84 @@
+@import url("//db.onlinewebfonts.com/c/adfdcfb900b1d051d06ebd612d907e44?family=Orelo+SemiWide+Heavy");
 #root {
     box-sizing: border-box;
     margin: auto;
-    text-align: center;
     background-image: url(../assets/bg.png);
+    height: 100%;
 }
 
-.head {
-    min-height: 50px;
+#content {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 50px 0;
+    overflow: hidden;
+}
+
+nav {
+    height: 5rem;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+
+    background-color: rgba(0, 0, 0, 0.125);
+    color: #e29578;
 
     display: flex;
     flex-direction: row;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.225);
-    color: white;
+    justify-content: space-between;
+}
+nav-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    background-color: rgba(227, 3, 3, 0.838);
 }
 
-.body {
+body {
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.125);
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+}
+
+footer {
     display: flex;
     flex-direction: column;
     width: 100%;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.125);
+    justify-content: center;
+    align-content: space-evenly;
+    flex-grow: 0;
 
-    color: white;
-    height: 100vh;
-    padding: 0;
-}
-
-.footer {
-    position: absolute;
-    display: flex center;
     bottom: 0px;
     left: 0;
     width: 100%;
-    text-align: center;
     background-color: rgba(0, 0, 0, 0.125);
-    color: rgb(97, 102, 100);
+    color: #e29578;
     font-size: 75%;
     padding-bottom: 0cap;
-    height: 5rem;
+    height: fit-content;
+
+    position: absolute;
 }
 
-.button {
-    max-width: 120px;
+a {
+    color: #e29578;
+}
+a:hover {
+    color: #ffddd2;
+}
+
+Button {
+    max-width: 300px;
     position: relative;
     margin: 1%;
     padding: 1rem;
-    text-align: right;
-    background-color: rgb(124, 227, 181);
+    background-color: rgb(122, 126, 124);
     border-color: rgb(78, 76, 76);
     float: right;
 }
@@ -109,13 +137,14 @@
     display: flex;
     /** One element on top of the other **/
     flex-direction: column;
+    align-items: center;
 }
 
 .form-group label {
     /** Medium font size **/
     font-size: 16px;
     /** Visible color **/
-    color: white;
+    color: black;
     /** Bottom space between it and the input form **/
     margin-bottom: 5px;
 }
@@ -123,7 +152,7 @@
 .form-group input[type="text"],
 textarea {
     /** Size-able width of the input **/
-    width: 90%;
+    width: 100%;
     /** Size-able height of the input **/
     height: 40px;
     /** Smooth corners on all edges **/
@@ -160,16 +189,19 @@ textarea {
 }
 
 .logo {
+    margin-left: 2.5em;
     height: 6em;
-    padding: 1.5em;
+    padding: 0.5em;
     will-change: filter;
     transition: filter 300ms;
+    font-family: "Orelo SemiWide Heavy";
+    font-size: x-large;
 }
 .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 0.5em #caca23aa);
 }
 .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 0.5em #73fb61d0);
 }
 
 @keyframes logo-spin {

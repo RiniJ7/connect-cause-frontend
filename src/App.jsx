@@ -1,13 +1,35 @@
-import { useEffect, useState } from "react";
+//
+import { useState } from "react";
+import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from "react-router-dom";
+//styles
 import "../src/styles/App.css";
 import "../src/index.css";
-import Header from "./layouts/Header.jsx";
-import Footer from "./layouts/Footer.jsx";
-import HomePage from "./layouts/HomePage.jsx";
+//layout
+import RootLayout from "./layouts/RootLayout";
+//pages
+import ErrorPage from "./pages/ErrorPage";
+import LoginPage from "./pages/LoginPage";
+import VolunteerProfilePage from "./pages/VolunteerProfile";
+
+function ErrorBoundary() {
+    let error = useRouteError();
+    console.error(error);
+    // Uncaught ReferenceError: path is not defined
+    return <div>Dang!</div>;
+}
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<RootLayout />}>
+            <Route index element={<LoginPage />} />
+            <Route path="profile" element={<VolunteerProfilePage />} />
+
+            {/* this is a catch-all for any pages that don't exist */}
+            <Route path="*" element={<ErrorPage />} />
+        </Route>
+    )
+);
 
 function App() {
-    const [volunteer, setVolunteer] = useState([]);
-    const [loggedInToken, setLoggedInToken] = useState("");
     // ///// an example
     //     useEffect(() => {
     //         async function getSuperheroes() {
@@ -21,17 +43,8 @@ function App() {
     // /////
 
     return (
-        <div>
-            <div className="head">
-                <Header title="Connect Cause Calgary" subtitle="Your next volunteering opportunity is here.." choice1=" LogOut" choice2="Home" />
-            </div>
-            <div className="body">
-                <HomePage />
-                {/* need to put a router here to change content of "div tag" to load new pages  */}
-            </div>
-            <div className="footer">
-                <Footer />
-            </div>
+        <div className="root">
+            <RouterProvider router={router} />
         </div>
     );
 }
