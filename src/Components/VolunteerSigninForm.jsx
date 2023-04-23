@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-// import "./Signinform.css";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 import { Button, ButtonGroup, Stack } from "@mui/material";
 
-export function Signinform(props) {
+export function VolunteerSigninForm(props) {
     const [errorMessage, setErrorMessage] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const { setUserToken } = useContext(UserContext);
 
     const volunteer = {
         email,
@@ -28,7 +30,9 @@ export function Signinform(props) {
                 setErrorMessage(error.message);
             } else {
                 const userData = await response.json();
+
                 console.log("response data is: ", userData);
+                setUserToken(userData.token);
             }
         } catch (error) {
             console.log(error.message);
@@ -37,8 +41,9 @@ export function Signinform(props) {
 
     return (
         <div className="form-container">
-            <h3>{props.title}</h3>
             <form className="form" onSubmit={signInVolunteer}>
+                <h3>{props.title}</h3>
+                <br />
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
                     <input type="text" id="email" placeholder="Enter your email" name="email" required onChange={(event) => setEmail(event.target.value)} />
@@ -58,6 +63,18 @@ export function Signinform(props) {
                     <Button className="form-submit-btn" type="submit" title="submit">
                         Sign In
                     </Button>
+                    <br />
+                    <p>
+                        Don't have an account?&nbsp;
+                        <a
+                            onClick={() => {
+                                props.setSignupSelected(true);
+                                props.setSigninSelected(false);
+                            }}
+                        >
+                            Create One
+                        </a>
+                    </p>
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                 </div>
             </form>

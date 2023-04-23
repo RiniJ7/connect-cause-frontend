@@ -2,38 +2,38 @@ import React, { useState } from "react";
 import "../styles/App.css";
 import { Button, ButtonGroup, Stack } from "@mui/material";
 
-export function Signupform(props) {
+export function CompanySignupform(props) {
     const [errorMessage, setErrorMessage] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const volunteer = {
+    const company = {
         firstName,
         lastName,
         email,
         password,
     };
 
-    const signUpVolunteer = async (event) => {
+    const signUpCompany = async (event) => {
         event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
         try {
-            const response = await fetch("api/authenticate/signup/volunteer", {
+            const response = await fetch("api/authenticate/signup/company", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(volunteer),
+                body: JSON.stringify(company),
             });
             if (!response.ok) {
                 console.log("You encountered an error");
                 const error = await response.json();
                 setErrorMessage(error.message);
             } else {
-                const volunteerData = await response.json();
-                console.log("response data is: ", volunteerData);
-                props.setLoggedInToken(volunteerData.token);
+                const companyData = await response.json();
+                console.log("response data is: ", companyData);
+                props.setLoggedInToken(companyData.token);
             }
         } catch (error) {
             console.log(error.message);
@@ -42,8 +42,9 @@ export function Signupform(props) {
 
     return (
         <div className="form-container">
-            <h3>{props.title}</h3>
-            <form className="form" onSubmit={signUpVolunteer}>
+            <form className="form" onSubmit={signUpCompany}>
+                <h3>{props.title}</h3>
+                <br />
                 <div className="form-group">
                     <label htmlFor="name">First Name:</label>
                     <input
@@ -85,6 +86,18 @@ export function Signupform(props) {
                     <Button className="form-submit-btn" type="submit" title="submit">
                         Sign Up
                     </Button>
+                    <br />
+                    <p>
+                        Already have an account?&nbsp;
+                        <a
+                            onClick={() => {
+                                props.setSigninSelected(true);
+                                props.setSignupSelected(false);
+                            }}
+                        >
+                            Log In
+                        </a>
+                    </p>
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                 </div>
             </form>
