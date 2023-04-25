@@ -63,7 +63,7 @@ footer {
     padding-bottom: 0cap;
     height: fit-content;
 
-    position: absolute;
+    /* position: absolute; */
 }
 
 a {
