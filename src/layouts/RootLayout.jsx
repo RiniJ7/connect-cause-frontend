@@ -32,10 +32,7 @@ export default function RootLayout() {
             <footer>
                 <p>Copyrights @ Witty Web Wizards"</p>
                 <p>
-                    Website background by Image by{" "}
-                    <a href="https://www.freepik.com/free-vector/flat-design-minimalist-background_35237778.htm#query=abstract%20background&position=18&from_view=search&track=ais">
-                        Freepik
-                    </a>
+                    Website background by <a href="https://www.magicpattern.design/tools/mesh-gradients">Magic Pattern</a>
                 </p>
             </footer>
         </div>
