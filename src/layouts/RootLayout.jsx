@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, Link } from "react-router-dom";
 import "../styles/App.css";
 import { Button } from "@mui/material";
 
@@ -14,8 +14,11 @@ export default function RootLayout() {
         <div className="root-layout">
             <header>
                 <nav>
-                    <h1 className="logo">Connect Cause</h1>
-                    <div className="nav-buttons">
+                    <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+                        Connect Cause
+                    </Link>
+
+                    <div style={{ display: "flex" }}>
                         <Button variant="outlined" component={HomeRef} to="/">
                             Home
                         </Button>

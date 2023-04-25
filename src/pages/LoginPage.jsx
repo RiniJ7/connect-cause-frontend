@@ -29,6 +29,7 @@ export default function LoginPage(props) {
                             <br />
                             {volunteerLogin == true && (
                                 <Button
+                                    variant="outlined"
                                     onClick={() => {
                                         setCompanyLogin(true);
                                         setVolunteerLogin(false);
@@ -39,6 +40,7 @@ export default function LoginPage(props) {
                             )}
                             {companyLogin == true && (
                                 <Button
+                                    variant="outlined"
                                     onClick={() => {
                                         setCompanyLogin(false);
                                         setVolunteerLogin(true);

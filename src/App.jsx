@@ -5,23 +5,63 @@ import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } 
 import "../src/styles/App.css";
 import "../src/index.css";
 //layout
-import RootLayout from "./layouts/RootLayout";
+import RootLayout from "./layouts/RootLayout.jsx";
 //pages
-import ErrorPage from "./pages/ErrorPage";
-import LoginPage from "./pages/LoginPage";
-import VolunteerProfilePage from "./pages/VolunteerProfile";
+import ErrorPage from "./pages/ErrorPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-function ErrorBoundary() {
-    let error = useRouteError();
-    console.error(error);
-    // Uncaught ReferenceError: path is not defined
-    return <div>Dang!</div>;
-}
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: "#83c5be",
+            main: "#006d77",
+            dark: "#e29578",
+            contrastText: "#ffddd2",
+        },
+        secondary: {
+            light: "#ff7961",
+            main: "#f44336",
+            dark: "#ba000d",
+            contrastText: "#000",
+        },
+    },
+    components: {
+        // Name of the component
+        MuiButton: {
+            styleOverrides: {
+                // Name of the slot
+                root: {
+                    color: "#e29578",
+                    borderColor: "#e29578",
+                    fontFamily: [
+                        "-apple-system",
+                        "BlinkMacSystemFont",
+                        '"Segoe UI"',
+                        "Roboto",
+                        '"Helvetica Neue"',
+                        "Arial",
+                        "sans-serif",
+                        '"Apple Color Emoji"',
+                        '"Segoe UI Emoji"',
+                        '"Segoe UI Symbol"',
+                    ].join(","),
+                    "&:hover": {
+                        color: "#ffddd2",
+                        borderColor: "#ffddd2",
+                    },
+                },
+            },
+        },
+    },
+});
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
             <Route index element={<LoginPage />} />
-            <Route path="profile" element={<VolunteerProfilePage />} />
+            <Route path="profile" element={<ProfilePage />} />
 
             {/* this is a catch-all for any pages that don't exist */}
             <Route path="*" element={<ErrorPage />} />
@@ -44,7 +84,9 @@ function App() {
 
     return (
         <div className="root">
-            <RouterProvider router={router} />
+            <ThemeProvider theme={theme}>
+                <RouterProvider router={router} />
+            </ThemeProvider>
         </div>
     );
 }
