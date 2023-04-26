@@ -1,23 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import "../styles/App.css";
-import { Button, ButtonGroup, Stack } from "@mui/material";
+import { Button } from "@mui/material";
 import { UserContext } from "../context/UserContext.jsx";
 
 export function VolunteerSignupform(props) {
     const [errorMessage, setErrorMessage] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const { user, setUser } = useContext(UserContext);
-
-    const volunteer = {
-        firstName,
-        lastName,
-        email,
-        password,
-    };
 
     const signUpVolunteer = async (event) => {
         event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
@@ -27,7 +18,12 @@ export function VolunteerSignupform(props) {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(volunteer),
+                body: JSON.stringify({
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    password: password,
+                }),
             });
             if (!response.ok) {
                 console.log("You encountered an error");
@@ -35,17 +31,15 @@ export function VolunteerSignupform(props) {
                 setErrorMessage(error.message);
             } else {
                 const volunteerData = await response.json();
-                console.log("response data is: ", volunteerData);
-                setUser({
-                    firstName: volunteerData.firstName,
-                    lastName: volunteerData.lastName,
-                    token: volunteerData.token,
-                });
+                // console.log("response data is: ", volunteerData);
+                // console.log(`token is ${volunteerData.token}`);
+                setUser({ ...user, token: volunteerData.token });
             }
         } catch (error) {
             console.log(error.message);
         }
     };
+    console.log("user context", user);
 
     return (
         <div className="form-container">
@@ -59,9 +53,9 @@ export function VolunteerSignupform(props) {
                         id="name"
                         placeholder="Enter your first name"
                         name="name"
-                        value={firstName}
+                        value={user.firstName}
                         required
-                        onChange={(event) => setFirstName(event.target.value)}
+                        onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                     />
                 </div>
                 <div className="form-group">
@@ -71,9 +65,9 @@ export function VolunteerSignupform(props) {
                         id="lastName"
                         placeholder="Enter your last name"
                         name="lastName"
-                        value={lastName}
+                        value={user.lastName}
                         required
-                        onChange={(event) => setLastName(event.target.value)}
+                        onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                     />
                 </div>
                 <div className="form-group">
@@ -83,9 +77,9 @@ export function VolunteerSignupform(props) {
                         id="email"
                         placeholder="Enter your email"
                         name="email"
-                        value={email}
+                        value={user.email}
                         required
-                        onChange={(event) => setEmail(event.target.value)}
+                        onChange={(e) => setUser({ ...user, email: e.target.value })}
                     />
                 </div>
                 <div className="form-group">
@@ -101,7 +95,7 @@ export function VolunteerSignupform(props) {
                     />
                 </div>
                 <div className="form-group">
-                    <Button className="form-submit-btn" type="submit" title="submit" onClick={(x) => setStateUserToken(stateUserToken)}>
+                    <Button className="form-submit-btn" type="submit" title="submit">
                         Sign Up
                     </Button>
                     <br />
@@ -119,6 +113,7 @@ export function VolunteerSignupform(props) {
                     {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
                 </div>
             </form>
+            {user.token != null && <Navigate to="/profile/volunteer" replace={true} />}
         </div>
     );
 }

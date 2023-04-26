@@ -19,7 +19,7 @@ export default function ProfilePage(props) {
     let [submit, setSubmit] = useState("Submit");
 
     return (
-        <div class="profilepage-container">
+        <div className="profilepage-container">
             <main>
                 <div>
                     <form>
@@ -47,35 +47,33 @@ export default function ProfilePage(props) {
                             <input></input>
                         </span>
                         <span>
-                            <form>
-                                <label>Interests</label>
-                                <div class="flex-container">
-                                    <div>
-                                        <label>Interest 1</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 2</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 3</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 4</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 5</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 6</label>
-                                        <input type="checkbox" />
-                                    </div>
+                            <label>Interests</label>
+                            <div className="flex-container">
+                                <div>
+                                    <label>Interest 1</label>
+                                    <input type="checkbox" />
                                 </div>
-                            </form>
+                                <div>
+                                    <label>Interest 2</label>
+                                    <input type="checkbox" />
+                                </div>
+                                <div>
+                                    <label>Interest 3</label>
+                                    <input type="checkbox" />
+                                </div>
+                                <div>
+                                    <label>Interest 4</label>
+                                    <input type="checkbox" />
+                                </div>
+                                <div>
+                                    <label>Interest 5</label>
+                                    <input type="checkbox" />
+                                </div>
+                                <div>
+                                    <label>Interest 6</label>
+                                    <input type="checkbox" />
+                                </div>
+                            </div>
                         </span>
                     </form>
 

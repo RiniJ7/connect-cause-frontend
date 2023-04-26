@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Outlet, Link } from "react-router-dom";
 import "../styles/App.css";
 import { Button } from "@mui/material";
@@ -10,6 +10,7 @@ const HomeRef = React.forwardRef((props, ref) => (
 ));
 
 export default function RootLayout() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
         <div className="root-layout">
             <header>
@@ -22,7 +23,9 @@ export default function RootLayout() {
                         <Button variant="outlined" component={HomeRef} to="/">
                             Home
                         </Button>
-                        <Button variant="outlined">Logout</Button>
+                        <Button variant="outlined" href="/">
+                            Logout
+                        </Button>
                     </div>
                 </nav>
             </header>

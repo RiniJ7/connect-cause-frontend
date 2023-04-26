@@ -1,6 +1,10 @@
-//
-import { useState } from "react";
-import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import { UserContext } from "react";
+import {
+    createBrowserRouter,
+    Route,
+    createRoutesFromElements,
+    RouterProvider,
+} from "react-router-dom";
 //styles
 import "../src/styles/App.css";
 import "../src/index.css";
@@ -9,8 +13,14 @@ import RootLayout from "./layouts/RootLayout.jsx";
 //pages
 import ErrorPage from "./pages/ErrorPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import VolunteerProfilePage from "./pages/VolunteerProfilePage.jsx";
+import { VolunteerProfileLayout } from "./layouts/VolunteerProfileLayout.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import HelpLayout from "./layouts/HelpLayout";
+import Faq from "./pages/help/Faq";
+import Contact from "./pages/help/Contact";
+import { CompanyProfileLayout } from "./layouts/CompanyProfileLayout";
+import OpportunitiesLayout from "./layouts/OpportunitiesLayout";
 
 const theme = createTheme({
     palette: {
@@ -61,8 +71,19 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
             <Route index element={<LoginPage />} />
-            <Route path="profile" element={<ProfilePage />} />
-
+            <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
+                <Route path="" />
+            </Route>
+            <Route path="profile/company" element={<CompanyProfileLayout />}>
+                <Route />
+            </Route>
+            <Route path="opportunities" element={<OpportunitiesLayout />}>
+                <Route />
+            </Route>
+            <Route path="help" element={<HelpLayout />}>
+                <Route path="faq" element={<Faq />} />
+                <Route path="contact" element={<Contact />} />
+            </Route>
             {/* this is a catch-all for any pages that don't exist */}
             <Route path="*" element={<ErrorPage />} />
         </Route>
@@ -70,18 +91,6 @@ const router = createBrowserRouter(
 );
 
 function App() {
-    // ///// an example
-    //     useEffect(() => {
-    //         async function getSuperheroes() {
-    //           const response = await fetch(`/api/superhero/${id}`);
-    //           const superheroData = await response.json();
-    //           console.log(superheroData);
-    //           setSuperhero(superheroData);
-    //         }
-    //         getSuperheroes();
-    //       }, []);
-    // /////
-
     return (
         <div className="root">
             <ThemeProvider theme={theme}>
