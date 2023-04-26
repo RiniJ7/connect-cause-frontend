@@ -1,94 +1,94 @@
-import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-// import { ProfileForm } from "../components/ProfileForm.jsx";
-import { useState } from "react";
-import { Button, ButtonGroup, Stack } from "@mui/material";
+// import React from "react";
+// import { Link, Route, Routes } from "react-router-dom";
+// // import { ProfileForm } from "../components/ProfileForm.jsx";
+// import { useState } from "react";
+// import { Button, ButtonGroup, Stack } from "@mui/material";
 
-import "../styles/App.css";
+// import "../styles/App.css";
 
-export default function ProfilePage(props) {
-    const [signupSelected, setSignupSelected] = useState([false]);
-    const [loggedInToken, setLoggedInToken] = useState("");
+// export default function ProfilePage(props) {
+//     const [signupSelected, setSignupSelected] = useState([false]);
+//     const [loggedInToken, setLoggedInToken] = useState("");
 
-    let [firstName, setFirstName] = useState("First Name");
-    let [lastName, setLastName] = useState("Last Name");
-    let [aboutMe, setAboutMe] = useState("About Me");
-    let [linkedIn, setLinkedIn] = useState("Upload LinkedIn Profile");
-    let [profilePicture, setProfilePicture] = useState("Set Profile Picture");
-    let [interest, setInterests] = useState("Interests");
-    let [submit, setSubmit] = useState("Submit");
+//     let [firstName, setFirstName] = useState("First Name");
+//     let [lastName, setLastName] = useState("Last Name");
+//     let [aboutMe, setAboutMe] = useState("About Me");
+//     let [linkedIn, setLinkedIn] = useState("Upload LinkedIn Profile");
+//     let [profilePicture, setProfilePicture] = useState("Set Profile Picture");
+//     let [interest, setInterests] = useState("Interests");
+//     let [submit, setSubmit] = useState("Submit");
 
-    return (
-        <div class="profilepage-container">
-            <main>
-                <div>
-                    <form>
-                        <span>
-                            <label>First Name</label>
-                            <input></input>
-                        </span>
-                        <span>
-                            <label>Last Name</label>
-                            <input></input>
-                        </span>
-                        <div>
-                            <span>
-                                <label>About Me</label>
-                                <input></input>
-                            </span>
-                        </div>
+//     return (
+//         <div class="profilepage-container">
+//             <main>
+//                 <div>
+//                     <form>
+//                         <span>
+//                             <label>First Name</label>
+//                             <input></input>
+//                         </span>
+//                         <span>
+//                             <label>Last Name</label>
+//                             <input></input>
+//                         </span>
+//                         <div>
+//                             <span>
+//                                 <label>About Me</label>
+//                                 <input></input>
+//                             </span>
+//                         </div>
 
-                        <div>
-                            <label>Profile Picture</label>
-                            <input></input>
-                        </div>
-                        <span>
-                            <label>LinkedIn</label>
-                            <input></input>
-                        </span>
-                        <span>
-                            <form>
-                                <label>Interests</label>
-                                <div class="flex-container">
-                                    <div>
-                                        <label>Interest 1</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 2</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 3</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 4</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 5</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                    <div>
-                                        <label>Interest 6</label>
-                                        <input type="checkbox" />
-                                    </div>
-                                </div>
-                            </form>
-                        </span>
-                    </form>
+//                         <div>
+//                             <label>Profile Picture</label>
+//                             <input></input>
+//                         </div>
+//                         <span>
+//                             <label>LinkedIn</label>
+//                             <input></input>
+//                         </span>
+//                         <span>
+//                             <form>
+//                                 <label>Interests</label>
+//                                 <div class="flex-container">
+//                                     <div>
+//                                         <label>Interest 1</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                     <div>
+//                                         <label>Interest 2</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                     <div>
+//                                         <label>Interest 3</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                     <div>
+//                                         <label>Interest 4</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                     <div>
+//                                         <label>Interest 5</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                     <div>
+//                                         <label>Interest 6</label>
+//                                         <input type="checkbox" />
+//                                     </div>
+//                                 </div>
+//                             </form>
+//                         </span>
+//                     </form>
 
-                    <div>
-                        <Button>
-                            <h2>Submit</h2>
-                        </Button>
-                    </div>
-                </div>
-            </main>
-        </div>
-    );
-}
+//                     <div>
+//                         <Button>
+//                             <h2>Submit</h2>
+//                         </Button>
+//                     </div>
+//                 </div>
+//             </main>
+//         </div>
+//     );
+// }
 
 // import React, { useState, useCallback } from "react";
 // // Import image// npm install --save next-images
