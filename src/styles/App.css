@@ -48,7 +48,6 @@ nav-buttons {
 
 main {
     display: flex;
-    align-items: center;
     justify-content: center;
     min-height: 100vh;
     color: #ffddd2;
@@ -109,7 +108,11 @@ Button {
     /** Spacing from the top **/
     margin-top: 10px;
     /** Smooth transition to the bottom from a greyish to a less greyish color **/
-    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0)
+    );
     /** A blur effect behind the form **/
     backdrop-filter: "blur(10px)";
 }
@@ -125,6 +128,7 @@ Button {
     flex-direction: column;
     /* Display horizontally at the center */
     align-items: center;
+
     /* Smooth transition to bottom right with different colors */
     /* background-color: transparent; */
     /* background-image: linear-gradient(to bottom right, #fc0345, #fc03b1, #4a03fc); */
@@ -139,6 +143,7 @@ Button {
 .form-group {
     /** Bottom space between one form-group and the other **/
     margin-bottom: 20px;
+
     /** Responsive layout **/
     display: flex;
     /** One element on top of the other **/

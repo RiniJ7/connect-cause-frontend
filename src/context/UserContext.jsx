@@ -1,21 +1,12 @@
 import { createContext, useState } from "react";
 
-export const UserContext = createContext();
+export const UserContext = createContext("default context value");
 
-export const UserContextProvider = (props) => {
-    const [user, setUser] = useState({
-        _id: "",
-        token: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-        interests: "",
-        about_me: "",
-        volunteering_records: [],
-        profileImage: "",
-        linkedinLink: "",
-        pastVolunteer: null,
-    });
+const initialUser = { firstName: "", lastName: "", email: "", token: null };
 
-    return <UserContext.Provider value={[user, setUser]}>{props.children}</UserContext.Provider>;
-};
+function UserContextProvider({ children }) {
+    const [user, setUser] = useState(initialUser);
+    return <UserContext.Provider value={{ user: user, setUser: setUser }}>{children}</UserContext.Provider>;
+}
+
+export default UserContextProvider;

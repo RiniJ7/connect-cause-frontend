@@ -1,5 +1,6 @@
 import React from "react";
 
+import { UserContext } from "../context/UserContext.jsx";
 import { VolunteerSignupform } from "../components/VolunteerSignupform.jsx";
 import { VolunteerSigninForm } from "../components/VolunteerSigninForm.jsx";
 import { CompanySignupform } from "../components/CompanySignupform.jsx";
@@ -10,12 +11,12 @@ import { Button } from "@mui/material";
 import "../styles/App.css";
 
 export default function LoginPage(props) {
-    const [VolunteerSignInSelected, setVolunteerSignInSelected] = useState(false);
-    const [VolunteerSignUpSelected, setVolunteerSignUpSelected] = useState(true);
-    const [CompanySignInSelected, setCompanySignInSelected] = useState(false);
-    const [CompanySignUpSelected, setCompanySignUpSelected] = useState(true);
-    const [volunteerLogin, setVolunteerLogin] = useState(true);
-    const [companyLogin, setCompanyLogin] = useState(false);
+    const [VolunteerSignInForm, setVolunteerSignInSelected] = useState(false);
+    const [VolunteerSignUpForm, setVolunteerSignUpSelected] = useState(true);
+    const [CompanySignInForm, setCompanySignInSelected] = useState(false);
+    const [CompanySignUpForm, setCompanySignUpSelected] = useState(true);
+    const [volunteerLoginPage, setVolunteerLogin] = useState(true);
+    const [companyLoginPage, setCompanyLogin] = useState(false);
 
     return (
         <div>
@@ -27,7 +28,7 @@ export default function LoginPage(props) {
                     <div>
                         <div>
                             <br />
-                            {volunteerLogin == true && (
+                            {volunteerLoginPage == true && (
                                 <Button
                                     variant="outlined"
                                     onClick={() => {
@@ -38,7 +39,7 @@ export default function LoginPage(props) {
                                     Company Login
                                 </Button>
                             )}
-                            {companyLogin == true && (
+                            {companyLoginPage == true && (
                                 <Button
                                     variant="outlined"
                                     onClick={() => {
@@ -49,7 +50,7 @@ export default function LoginPage(props) {
                                     Volunteer Login
                                 </Button>
                             )}
-                            {VolunteerSignInSelected == true && volunteerLogin == true && (
+                            {VolunteerSignInForm == true && volunteerLoginPage == true && (
                                 <VolunteerSigninForm
                                     setLoginToken={props.setLoginToken}
                                     title="Volunteer Sign In"
@@ -58,7 +59,7 @@ export default function LoginPage(props) {
                                 />
                             )}
 
-                            {VolunteerSignUpSelected == true && volunteerLogin == true && (
+                            {VolunteerSignUpForm == true && volunteerLoginPage == true && (
                                 <VolunteerSignupform
                                     setLoginToken={props.setLoginToken}
                                     title="Volunteer Signup"
@@ -66,7 +67,7 @@ export default function LoginPage(props) {
                                     setSigninSelected={setVolunteerSignInSelected}
                                 />
                             )}
-                            {CompanySignInSelected == true && companyLogin == true && (
+                            {CompanySignInForm == true && companyLoginPage == true && (
                                 <CompanySigninForm
                                     setLoginToken={props.setLoginToken}
                                     title="Company Sign In"
@@ -75,7 +76,7 @@ export default function LoginPage(props) {
                                 />
                             )}
 
-                            {CompanySignUpSelected == true && companyLogin == true && (
+                            {CompanySignUpForm == true && companyLoginPage == true && (
                                 <CompanySignupform
                                     setLoginToken={props.setLoginToken}
                                     title="Company Signup"
