@@ -9,7 +9,8 @@ import RootLayout from "./layouts/RootLayout.jsx";
 //pages
 import ErrorPage from "./pages/ErrorPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
+import {ProfilePage} from "./pages/ProfilePage.jsx";
+import VolunteerProfileForm from "./Components/VolunteerProfileForm.jsx"
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -61,7 +62,9 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
             <Route index element={<LoginPage />} />
-            <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile" element={<ProfilePage />} >
+                <Route path="profile" element={<VolunteerProfileForm/>}/>
+            </Route>
 
             {/* this is a catch-all for any pages that don't exist */}
             <Route path="*" element={<ErrorPage />} />
