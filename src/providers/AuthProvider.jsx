@@ -20,6 +20,8 @@ const AuthProvider = (props) => {
         if (userResponse.ok) {
             const userData = await userResponse.json();
             setUser(userData);
+            // set the token to a cookie
+
             return true;
         } else {
             setUser(null);
