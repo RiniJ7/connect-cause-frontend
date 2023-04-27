@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/App.css";
 import { Button } from "@mui/material";
 import { UserContext } from "../context/UserContext.jsx";
@@ -6,7 +6,7 @@ import { AllInterests } from "./Interests.jsx";
 
 export default function VolunteerProfileForm(props) {
   //setting initial state of the error message and profile page fields to empty string
-
+  const { userState, setUserState } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -15,7 +15,8 @@ export default function VolunteerProfileForm(props) {
   const [profilePicture, setProfilePicture] = useState("");
 
   const userProfile = {
-    firstName,
+    _id: userState._id,
+    firstName: userState.firstName,
     lastName,
     aboutMe,
     linkedIn,
@@ -26,7 +27,7 @@ export default function VolunteerProfileForm(props) {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
     try {
       //fetch the one connect to the user profile
-      const response = await fetch("api/volunteers/userprofile", {
+      const response = await fetch("api/volunteers/:_id", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
