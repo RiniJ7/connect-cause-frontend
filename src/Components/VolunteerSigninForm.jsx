@@ -1,13 +1,17 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../context/UserContext";
 import { Button, ButtonGroup, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { UserContext } from "../context/UserContext";
+import { useAuth } from "../providers/AuthProvider";
 
 export function VolunteerSigninForm(props) {
     const [errorMessage, setErrorMessage] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const { setUserToken } = useContext(UserContext);
+    const navigate = useNavigate();
+    const { login } = useAuth();
+    const { user, setUser } = useContext(UserContext);
 
     const volunteer = {
         email,
@@ -32,7 +36,7 @@ export function VolunteerSigninForm(props) {
                 const userData = await response.json();
 
                 console.log("response data is: ", userData);
-                setUserToken(userData.token);
+                setUser({ ...user, token: userData.token });
             }
         } catch (error) {
             console.log(error.message);
@@ -46,7 +50,14 @@ export function VolunteerSigninForm(props) {
                 <br />
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" placeholder="Enter your email" name="email" required onChange={(event) => setEmail(event.target.value)} />
+                    <input
+                        type="text"
+                        id="email"
+                        placeholder="Enter your email"
+                        name="email"
+                        required
+                        onChange={(event) => setEmail(event.target.value)}
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password:</label>

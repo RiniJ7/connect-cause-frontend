@@ -1,14 +1,30 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Navigate } from "react-router-dom";
-import "../styles/App.css";
-import { Button } from "@mui/material";
+import React, { useState, useContext } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+
 import { UserContext } from "../context/UserContext.jsx";
+import { useAuth } from "../providers/AuthProvider.jsx";
+
+import { Button } from "@mui/material";
+import "../styles/App.css";
 
 export function VolunteerSignupform(props) {
     const [errorMessage, setErrorMessage] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const { login } = useAuth();
 
     const { user, setUser } = useContext(UserContext);
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const isValid = await login(username, password);
+        if (!isValid) {
+            setErrorMessage("Incorrect username or password");
+        } else {
+            navigate(-1);
+        }
+    };
 
     const signUpVolunteer = async (event) => {
         event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
