@@ -74,7 +74,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
             <Route path="login" element={<LoginPage />} />
-            {user && (
+            {user.userType == "v" && (
                 <Authenticated>
                     <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
                         <Route element={<VolunteerProfilePage />} />
