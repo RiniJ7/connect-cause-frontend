@@ -1,28 +1,28 @@
-import { UserContext } from "react";
 import {
     createBrowserRouter,
     Route,
     createRoutesFromElements,
     RouterProvider,
 } from "react-router-dom";
+//providers
+import { useAuth } from "./providers/AuthProvider.jsx";
+import Authenticated from "./Components/Authenticated.jsx";
 //styles
 import "../src/styles/App.css";
 import "../src/index.css";
-//layout
+//layouts
 import RootLayout from "./layouts/RootLayout.jsx";
+import { CompanyProfileLayout } from "./layouts/CompanyProfileLayout";
+import { VolunteerProfileLayout } from "./layouts/VolunteerProfileLayout.jsx";
+import HelpLayout from "./layouts/HelpLayout";
+import OpportunitiesLayout from "./layouts/OpportunitiesLayout";
 //pages
 import ErrorPage from "./pages/ErrorPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import VolunteerProfilePage from "./pages/VolunteerProfilePage.jsx";
-import VolunteerProfileForm from "./Components/VolunteerProfileForm.jsx";
-
-import { VolunteerProfileLayout } from "./layouts/VolunteerProfileLayout.jsx";
+import { VolunteerProfilePage } from "./pages/VolunteerProfilePage.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import HelpLayout from "./layouts/HelpLayout";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
-import { CompanyProfileLayout } from "./layouts/CompanyProfileLayout";
-import OpportunitiesLayout from "./layouts/OpportunitiesLayout";
 
 const theme = createTheme({
     palette: {
@@ -69,19 +69,24 @@ const theme = createTheme({
     },
 });
 
+const { logout, user } = useAuth();
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<RootLayout />}>
-            <Route index element={<LoginPage />} />
-            <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-                <Route element={<VolunteerProfilePage />} />
-            </Route>
-            <Route path="profile/company" element={<CompanyProfileLayout />}>
-                <Route />
-            </Route>
-            <Route path="opportunities" element={<OpportunitiesLayout />}>
-                <Route />
-            </Route>
+            <Route path="login" element={<LoginPage />} />
+            {user && (
+                <Authenticated>
+                    <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
+                        <Route element={<VolunteerProfilePage />} />
+                    </Route>
+                    <Route path="profile/company" element={<CompanyProfileLayout />}>
+                        <Route />
+                    </Route>
+                    <Route path="opportunities" element={<OpportunitiesLayout />}>
+                        <Route />
+                    </Route>
+                </Authenticated>
+            )}
             <Route path="help" element={<HelpLayout />}>
                 <Route path="faq" element={<Faq />} />
                 <Route path="contact" element={<Contact />} />
