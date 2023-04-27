@@ -7,11 +7,11 @@ import App from "./App";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <UserContextProvider>
-            <AuthProvider>
-                <App />
-            </AuthProvider>
-        </UserContextProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <AuthProvider>
+      <UserContextProvider>
+        <App />
+      </UserContextProvider>
+    </AuthProvider>
+  </React.StrictMode>
 );

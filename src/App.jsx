@@ -1,11 +1,12 @@
 import {
-    createBrowserRouter,
-    Route,
-    createRoutesFromElements,
-    RouterProvider,
+  createBrowserRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
 } from "react-router-dom";
 //providers
 import { useAuth } from "./providers/AuthProvider.jsx";
+
 import Authenticated from "./Components/Authenticated.jsx";
 //styles
 import "../src/styles/App.css";
@@ -25,86 +26,89 @@ import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
 
 const theme = createTheme({
-    palette: {
-        primary: {
-            light: "#83c5be",
-            main: "#006d77",
-            dark: "#e29578",
-            contrastText: "#ffddd2",
-        },
-        secondary: {
-            light: "#ff7961",
-            main: "#f44336",
-            dark: "#ba000d",
-            contrastText: "#000",
-        },
+  palette: {
+    primary: {
+      light: "#83c5be",
+      main: "#006d77",
+      dark: "#e29578",
+      contrastText: "#ffddd2",
     },
-    components: {
-        // Name of the component
-        MuiButton: {
-            styleOverrides: {
-                // Name of the slot
-                root: {
-                    color: "#e29578",
-                    borderColor: "#e29578",
-                    fontFamily: [
-                        "-apple-system",
-                        "BlinkMacSystemFont",
-                        '"Segoe UI"',
-                        "Roboto",
-                        '"Helvetica Neue"',
-                        "Arial",
-                        "sans-serif",
-                        '"Apple Color Emoji"',
-                        '"Segoe UI Emoji"',
-                        '"Segoe UI Symbol"',
-                    ].join(","),
-                    "&:hover": {
-                        color: "#ffddd2",
-                        borderColor: "#ffddd2",
-                    },
-                },
-            },
-        },
+    secondary: {
+      light: "#ff7961",
+      main: "#f44336",
+      dark: "#ba000d",
+      contrastText: "#000",
     },
+  },
+  components: {
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          color: "#e29578",
+          borderColor: "#e29578",
+          fontFamily: [
+            "-apple-system",
+            "BlinkMacSystemFont",
+            '"Segoe UI"',
+            "Roboto",
+            '"Helvetica Neue"',
+            "Arial",
+            "sans-serif",
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+          ].join(","),
+          "&:hover": {
+            color: "#ffddd2",
+            borderColor: "#ffddd2",
+          },
+        },
+      },
+    },
+  },
 });
 
-const { logout, user } = useAuth();
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route path="/" element={<RootLayout />}>
-            <Route path="login" element={<LoginPage />} />
-            {user.userType == "v" && (
-                <Authenticated>
-                    <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-                        <Route element={<VolunteerProfilePage />} />
-                    </Route>
-                    <Route path="profile/company" element={<CompanyProfileLayout />}>
-                        <Route />
-                    </Route>
-                    <Route path="opportunities" element={<OpportunitiesLayout />}>
-                        <Route />
-                    </Route>
-                </Authenticated>
-            )}
-            <Route path="help" element={<HelpLayout />}>
-                <Route path="faq" element={<Faq />} />
-                <Route path="contact" element={<Contact />} />
-            </Route>
-            {/* this is a catch-all for any pages that don't exist */}
-            <Route path="*" element={<ErrorPage />} />
-        </Route>
-    )
-);
-
 function App() {
-    return (
-        <div className="root">
-            <ThemeProvider theme={theme}>
-                <RouterProvider router={router} />
-            </ThemeProvider>
-        </div>
-    );
+  const { logout, user } = useAuth();
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <>
+          <Route index element={<LoginPage />} />
+          {/* <Route element={<Authenticated />}> */}
+          {/* <Authenticated> */}
+          <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
+            <Route element={<VolunteerProfilePage />} />
+          </Route>
+          <Route path="profile/company" element={<CompanyProfileLayout />}>
+            <Route />
+          </Route>
+          <Route path="opportunities" element={<OpportunitiesLayout />}>
+            <Route />
+          </Route>
+          {/* </Authenticated> */}
+          {/* </Route> */}
+        </>
+        <Route path="help" element={<HelpLayout />}>
+          <Route path="faq" element={<Faq />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+        {/* this is a catch-all for any pages that don't exist */}
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    )
+  );
+
+  return (
+    <div className="root">
+      <ThemeProvider theme={theme}>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </div>
+  );
 }
 
 export default App;
