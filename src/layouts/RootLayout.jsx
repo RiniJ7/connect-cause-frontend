@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Outlet, Link } from "react-router-dom";
+import { useAuth } from "../providers/AuthProvider";
 import "../styles/App.css";
 import { Button } from "@mui/material";
 
@@ -10,17 +11,28 @@ const HomeRef = React.forwardRef((props, ref) => (
 ));
 
 export default function RootLayout() {
+    const { logout, user } = useAuth();
+    console.log(user);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
         <div className="root-layout">
             <header>
                 <nav>
-                    <h1 className="logo">Connect Cause</h1>
-                    <div className="nav-buttons">
-                        <Button variant="outlined" component={HomeRef} to="/">
-                            Home
-                        </Button>
-                        <Button variant="outlined">Logout</Button>
-                    </div>
+                    <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+                        Connect Cause
+                    </Link>
+                    {user && (
+                        <>
+                            <div style={{ display: "flex" }}>
+                                <Button variant="outlined" component={HomeRef} to="/">
+                                    Home
+                                </Button>
+                                <Button variant="outlined" onClick={logout}>
+                                    Logout
+                                </Button>
+                            </div>
+                        </>
+                    )}
                 </nav>
             </header>
             <main>
@@ -29,10 +41,8 @@ export default function RootLayout() {
             <footer>
                 <p>Copyrights @ Witty Web Wizards"</p>
                 <p>
-                    Website background by Image by{" "}
-                    <a href="https://www.freepik.com/free-vector/flat-design-minimalist-background_35237778.htm#query=abstract%20background&position=18&from_view=search&track=ais">
-                        Freepik
-                    </a>
+                    Website background by{" "}
+                    <a href="https://www.magicpattern.design/tools/mesh-gradients">Magic Pattern</a>
                 </p>
             </footer>
         </div>

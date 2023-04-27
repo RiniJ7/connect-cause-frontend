@@ -27,4 +27,4 @@ const OpportunityDetails = ({ opportunityId }) => {
   );
 };
 
-export default OpportunityDetails;
+export default OpportunityDetails; 

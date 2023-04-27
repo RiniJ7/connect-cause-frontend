@@ -1,22 +1,33 @@
 @import url("//db.onlinewebfonts.com/c/adfdcfb900b1d051d06ebd612d907e44?family=Orelo+SemiWide+Heavy");
 #root {
     box-sizing: border-box;
-    margin: auto;
-    background-image: url(../assets/bg.png);
-    height: 100%;
+    background-image: url(../assets/magicpattern-mesh-gradient-1682395101118.png);
 }
 
-#content {
+div#container {
+    position: relative;
+    margin: 0;
+
+    height: auto !important;
+    height: 100vh;
+
+    min-height: 100%;
+}
+div#content {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    height: 100%;
-    padding: 50px 0;
+    height: 100vh;
+    padding: 1em 1em 5em; /*bottom padding for the footer */
     overflow: hidden;
+}
+div#content p {
+    text-align: justify;
+    padding: 0 1em;
 }
 
 nav {
-    height: 5rem;
+    height: 4rem;
     width: 100%;
     top: 0px;
     left: 0px;
@@ -35,14 +46,11 @@ nav-buttons {
     background-color: rgba(227, 3, 3, 0.838);
 }
 
-body {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.125);
-}
-
 main {
-    max-width: 1200px;
-    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    color: #ffddd2;
 }
 
 footer {
@@ -54,7 +62,8 @@ footer {
     align-content: space-evenly;
     flex-grow: 0;
 
-    bottom: 0px;
+    position: relative;
+    bottom: 0;
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.125);
@@ -63,7 +72,7 @@ footer {
     padding-bottom: 0cap;
     height: fit-content;
 
-    /* position: absolute; */
+    position: absolute;
 }
 
 a {
@@ -103,7 +112,11 @@ Button {
     /** Spacing from the top **/
     margin-top: 10px;
     /** Smooth transition to the bottom from a greyish to a less greyish color **/
-    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    background-image: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0)
+    );
     /** A blur effect behind the form **/
     backdrop-filter: "blur(10px)";
 }
@@ -119,6 +132,7 @@ Button {
     flex-direction: column;
     /* Display horizontally at the center */
     align-items: center;
+
     /* Smooth transition to bottom right with different colors */
     /* background-color: transparent; */
     /* background-image: linear-gradient(to bottom right, #fc0345, #fc03b1, #4a03fc); */
@@ -133,6 +147,7 @@ Button {
 .form-group {
     /** Bottom space between one form-group and the other **/
     margin-bottom: 20px;
+
     /** Responsive layout **/
     display: flex;
     /** One element on top of the other **/
@@ -195,10 +210,10 @@ textarea {
     will-change: filter;
     transition: filter 300ms;
     font-family: "Orelo SemiWide Heavy";
-    font-size: x-large;
+    font-size: xx-large;
 }
 .logo:hover {
-    filter: drop-shadow(0 0 0.5em #caca23aa);
+    filter: drop-shadow(0 0 0.08em #e29578);
 }
 .logo.react:hover {
     filter: drop-shadow(0 0 0.5em #73fb61d0);
@@ -229,15 +244,4 @@ textarea {
 
 .read-the-docs {
     color: hsl(0, 56%, 94%);
-}
-
-.button {
-    max-width: 120px;
-    position: relative;
-    margin: 1%;
-    padding: 1rem;
-    text-align: right;
-    background-color: rgb(124, 227, 181);
-    border-color: rgb(78, 76, 76);
-    float: right;
 }
