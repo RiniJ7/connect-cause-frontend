@@ -24,6 +24,7 @@ import { VolunteerProfilePage } from "./pages/VolunteerProfilePage.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
+// import OpportunityDetails from "./Components/OpportunityDetails.jsx";
 
 const theme = createTheme({
   palette: {
@@ -81,13 +82,13 @@ function App() {
           {/* <Route element={<Authenticated />}> */}
           {/* <Authenticated> */}
           <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-            <Route element={<VolunteerProfilePage />} />
+            <Route path="" element={<VolunteerProfilePage />} />
           </Route>
           <Route path="profile/company" element={<CompanyProfileLayout />}>
-            <Route />
+            {/* <Route path="" element={<CompanyProfilePage />} /> */}
           </Route>
           <Route path="opportunities" element={<OpportunitiesLayout />}>
-            <Route />
+            {/* <Route path="" element={<OpportunityDetails />} /> */}
           </Route>
           {/* </Authenticated> */}
           {/* </Route> */}
