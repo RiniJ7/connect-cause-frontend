@@ -245,3 +245,7 @@ textarea {
 .read-the-docs {
     color: hsl(0, 56%, 94%);
 }
+
+.home-page {
+    display: flex;
+}

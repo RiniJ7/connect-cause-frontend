@@ -21,18 +21,18 @@ export default function RootLayout() {
                     <Link to="/" className="logo" style={{ textDecoration: "none" }}>
                         Connect Cause
                     </Link>
-                    {user && (
-                        <>
-                            <div style={{ display: "flex" }}>
-                                <Button variant="outlined" component={HomeRef} to="/">
-                                    Home
-                                </Button>
-                                <Button variant="outlined" onClick={logout}>
-                                    Logout
-                                </Button>
-                            </div>
-                        </>
-                    )}
+                    {/* {user && ( */}
+                    <>
+                        <div style={{ display: "flex" }}>
+                            <Button variant="outlined" component={HomeRef} to="/">
+                                Home
+                            </Button>
+                            <Button variant="outlined" onClick={logout}>
+                                Logout
+                            </Button>
+                        </div>
+                    </>
+                    {/* )} */}
                 </nav>
             </header>
             <main>
