@@ -172,7 +172,7 @@ textarea {
   height: 40px;
   /** Smooth corners on all edges **/
   border-radius: 5px;
-  /** No line sorrounding the input **/
+  /** No line surrounding the input **/
   border: none;
   /** Top, right, bottom, right spacing to where content starts **/
   padding: 10px;
