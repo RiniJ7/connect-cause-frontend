@@ -39,7 +39,6 @@ export function AllInterests() {
       <fieldset>
         <legend>Choose your interests</legend>
         <div class="flex-container">
-          
           <div>
             <input
               className="form-group"
@@ -49,7 +48,7 @@ export function AllInterests() {
               placeholder="interest1"
               onChange={setCheckBox}
             />
-            <h4>Interest1</h4>
+            <label for="interest1"> Interest1 </label>
           </div>
           <div>
             <input
@@ -60,7 +59,7 @@ export function AllInterests() {
               placeholder="interest2"
               onChange={setCheckBox}
             />
-            <h4>Interest2</h4>
+            <label for="interest2"> Interest2 </label>
           </div>
           <div>
             <input
@@ -70,12 +69,10 @@ export function AllInterests() {
               value="interest3"
               placeholder="interest3"
               onChange={setCheckBox}
-              
             />
-            <h4>Interest3</h4>
+            <label for="interest3"> Interest3 </label>
           </div>
         </div>
-        
 
         <div class="flex-container">
           <div>
@@ -86,34 +83,34 @@ export function AllInterests() {
               value="interest4"
               placeholder="interest4"
               onChange={setCheckBox}
-              
             />
-            <h4>Interest4</h4>
-            </div>
-<div>
+            <label for="interest4"> Interest4 </label>
+          </div>
+          <div>
             <input
               className="form-group"
               type="checkbox"
               name="interest5"
               value="interest5"
+              background
               placeholder="interest5"
               onChange={setCheckBox}
             />
-            <h4>Interest5</h4>
-            </div>
-<div>
+            <label for="interest5"> Interest5 </label>
+          </div>
+          <div>
             <input
               className="form-group"
               type="checkbox"
               name="interest6"
               value="interest6"
-            
               onChange={setCheckBox}
             />
-            <h4>Interest6</h4>
+  
+            <label for="interest6"> Interest6 </label>
           </div>
         </div>
-        <Button type="submit">Submit</Button>
+        {/* <Button type="submit">Submit</Button> */}
       </fieldset>
     </>
   );
