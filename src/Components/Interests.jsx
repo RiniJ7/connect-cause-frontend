@@ -38,54 +38,81 @@ export function AllInterests() {
     <>
       <fieldset>
         <legend>Choose your interests</legend>
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest1"
-          value="interest1"
-          onChange={setCheckBox}
-        />
+        <div class="flex-container">
+          
+          <div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest1"
+              value="interest1"
+              placeholder="interest1"
+              onChange={setCheckBox}
+            />
+            <h4>Interest1</h4>
+          </div>
+          <div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest2"
+              value="interest2"
+              placeholder="interest2"
+              onChange={setCheckBox}
+            />
+            <h4>Interest2</h4>
+          </div>
+          <div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest3"
+              value="interest3"
+              placeholder="interest3"
+              onChange={setCheckBox}
+              
+            />
+            <h4>Interest3</h4>
+          </div>
+        </div>
+        
 
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest2"
-          value="interest2"
-          onChange={setCheckBox}
-        />
-
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest3"
-          value="interest3"
-          onChange={setCheckBox}
-        />
-
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest4"
-          value="interest4"
-          onChange={setCheckBox}
-        />
-
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest5"
-          value="interest5"
-          onChange={setCheckBox}
-        />
-
-        <input
-          className="form-box"
-          type="checkbox"
-          name="interest6"
-          value="interest6"
-          onChange={setCheckBox}
-        />
-
+        <div class="flex-container">
+          <div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest4"
+              value="interest4"
+              placeholder="interest4"
+              onChange={setCheckBox}
+              
+            />
+            <h4>Interest4</h4>
+            </div>
+<div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest5"
+              value="interest5"
+              placeholder="interest5"
+              onChange={setCheckBox}
+            />
+            <h4>Interest5</h4>
+            </div>
+<div>
+            <input
+              className="form-group"
+              type="checkbox"
+              name="interest6"
+              value="interest6"
+            
+              onChange={setCheckBox}
+            />
+            <h4>Interest6</h4>
+          </div>
+        </div>
         <Button type="submit">Submit</Button>
       </fieldset>
     </>

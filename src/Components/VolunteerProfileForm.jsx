@@ -17,7 +17,7 @@ export default function VolunteerProfileForm(props) {
   const userProfile = {
     _id: userState._id,
     firstName: userState.firstName,
-    lastName,
+    lastName: userState.lastName,
     aboutMe,
     linkedIn,
     profilePicture,
@@ -106,7 +106,7 @@ export default function VolunteerProfileForm(props) {
             <div className="form-group">
               <label htmlFor="Profile Picture">Profile Picture</label>
               <input
-                type="url"
+                type="text"
                 id="profilePicture"
                 placeholder="Please paste the file path of your image"
                 name="profilePicture"
@@ -115,12 +115,12 @@ export default function VolunteerProfileForm(props) {
               />
             </div>
 
-            <div>
+            <div className="form-group">
               <label htmlFor="LinkedIn">LinkedIn</label>
               <input
-                type="url"
+                type="text"
                 id="LinkedIn"
-                placeholder="Please paste the file path of your LinkedIn profile"
+                placeholder="Please paste the file path of your LinkedIn"
                 name="LinkedIn"
                 value={linkedIn}
                 onChange={(event) => setLinkedIn(event.target.value)}

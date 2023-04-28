@@ -3,6 +3,7 @@ import { NavLink, Outlet, Link } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 import "../styles/App.css";
 import { Button } from "@mui/material";
+import { FullscreenExit } from "@mui/icons-material";
 
 const HomeRef = React.forwardRef((props, ref) => (
     <div ref={ref}>
@@ -18,7 +19,7 @@ export default function RootLayout() {
         <div className="root-layout">
             <header>
                 <nav>
-                    <Link to="/" className="logo" style={{ textDecoration: "none" }}>
+                    <Link to="/" className="logo" style={{ textDecoration: "none"}}>
                         Connect Cause
                     </Link>
                     {user && (
@@ -36,15 +37,19 @@ export default function RootLayout() {
                 </nav>
             </header>
             <main>
+                <div className= "main-div"> 
                 <Outlet />
+                </div>
             </main>
+
             <footer>
                 <p>Copyrights @ Witty Web Wizards"</p>
                 <p>
                     Website background by{" "}
                     <a href="https://www.magicpattern.design/tools/mesh-gradients">Magic Pattern</a>
                 </p>
-            </footer>
-        </div>
+                </footer>
+            </div>
+        
     );
 }
