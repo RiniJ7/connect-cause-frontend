@@ -64,9 +64,9 @@ const InterestedVolunteeringOpportunities = (props) => {
   );
 };
 
-InterestedVolunteeringOpportunities.propTypes = {
-  // Define propTypes for the component
-  opportunities: PropTypes.array.isRequired, // opportunities prop is an array and is required
-};
+// InterestedVolunteeringOpportunities.propTypes = {
+//   // Define propTypes for the component
+//   opportunities: PropTypes.array.isRequired, // opportunities prop is an array and is required
+// };
 
 export default InterestedVolunteeringOpportunities; // Export the component as default

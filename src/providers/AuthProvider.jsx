@@ -44,10 +44,8 @@ const AuthProvider = (props) => {
       if (userResponse.ok) {
         const userData = await userResponse.json();
         setUser(userData);
-        return true;
       } else {
         setUser(null);
-        return false;
       }
       setLoading(false);
     };

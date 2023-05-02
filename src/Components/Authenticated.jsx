@@ -1,10 +1,10 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import { useAuth } from "../providers/AuthProvider";
 
-const Authenticated = (props) => {
-  const { children } = props;
-  const { user, setLoading } = useAuth();
+const Authenticated = () => {
+  const navigate = useNavigate();
+  const { user, loading } = useAuth();
   if (loading) {
     console.log("loading");
 
@@ -12,9 +12,9 @@ const Authenticated = (props) => {
   }
   if (!user) {
     console.log("Authenticated: Did not log in");
-    return <Navigate to="/" />;
+    return navigate("/login");
   } else {
-    return children;
+    return <Outlet />;
   }
 };
 

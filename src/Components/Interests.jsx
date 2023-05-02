@@ -92,7 +92,6 @@ export function AllInterests() {
               type="checkbox"
               name="interest5"
               value="interest5"
-              background
               placeholder="interest5"
               onChange={setCheckBox}
             />
