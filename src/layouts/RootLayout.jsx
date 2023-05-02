@@ -40,7 +40,7 @@ export default function RootLayout() {
                   Logout
                 </Button>
               )}
-              <Button variant="outlined" to="/">
+              <Button variant="outlined" component={Link} to="/">
                 Home
               </Button>
             </div>
