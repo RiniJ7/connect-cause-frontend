@@ -25,7 +25,7 @@ export default function LoginPage(props) {
         <div>
           <h3>Your next volunteering opportunity is here</h3>
         </div>
-        <div>
+        <div className = "width-style">
           <div>
             <br />
             {volunteerLoginPage == true && (

@@ -126,6 +126,8 @@ Button {
 .form-container {
   /* Entire page width */
   width: 100%;
+  
+  
   /* Entire page height */
   height: auto;
   /* Responsive layout */
@@ -154,6 +156,7 @@ Button {
   /** One element on top of the other **/
   flex-direction: column;
   align-items: center;
+
 }
 
 .form-group label {
@@ -279,6 +282,7 @@ header {
 label {
   font-size: medium;
 }
+
 .login-page {
   display: flex;
   flex-direction: column;
@@ -295,4 +299,10 @@ label {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+
+/* defining the max width expansion of the sign in component */
+.width-style {
+  max-width: 750px; 
 }
