@@ -24,7 +24,9 @@ import { VolunteerProfilePage } from "./pages/VolunteerProfilePage.jsx";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Faq from "./pages/help/Faq";
 import Contact from "./pages/help/Contact";
-// import OpportunityDetails from "./Components/OpportunityDetails.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import InterestedVolunteeringOpportunities from "./Components/InterestedVolunteeringOpportunities.jsx";
+import VolunteerOpportunities from "./Components/VolunteerOpportunities.jsx";
 
 const theme = createTheme({
   palette: {
@@ -78,17 +80,19 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <>
-          <Route index element={<LoginPage />} />
+          <Route index element={<HomePage />} />
+          <Route path="login" element={<LoginPage />} />
           {/* <Route element={<Authenticated />}> */}
           {/* <Authenticated> */}
           <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-            <Route path="" element={<VolunteerProfilePage />} />
+            <Route element={<VolunteerProfilePage />} />
           </Route>
           <Route path="profile/company" element={<CompanyProfileLayout />}>
-            {/* <Route path="" element={<CompanyProfilePage />} /> */}
+            <Route />
           </Route>
           <Route path="opportunities" element={<OpportunitiesLayout />}>
-            {/* <Route path="" element={<OpportunityDetails />} /> */}
+            <Route element={<InterestedVolunteeringOpportunities />} />
+            <Route path="volunteer" element={<VolunteerOpportunities />} />
           </Route>
           {/* </Authenticated> */}
           {/* </Route> */}

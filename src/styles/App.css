@@ -10,8 +10,6 @@ div#container {
 
   height: auto !important;
   height: 100vh;
-
-  min-height: 100%;
 }
 div#content {
   -webkit-box-sizing: border-box;
@@ -48,8 +46,11 @@ nav-buttons {
 
 main {
   display: flex;
+  flex-direction: column;
+  flex: auto;
   justify-content: center;
-  min-height: 100vh;
+
+  padding: 4rem;
   color: #ffddd2;
 }
 
@@ -62,17 +63,18 @@ footer {
   align-content: space-evenly;
   flex-grow: 0;
 
-  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.125);
-  color: #e29578;
-  font-size: 75%;
-  padding-bottom: 0cap;
-  height: fit-content;
+  background-color: rgba(201, 227, 211, 0.254);
 
-  position: absolute;
+  color: rgb(46, 46, 46);
+  font-size: 75%;
+  height: fit-content;
+}
+
+footer a {
+  color: #006d77;
 }
 
 a {
@@ -131,7 +133,6 @@ Button {
   /* Display on top of the other */
   flex-direction: column;
   /* Display horizontally at the center */
-  align-items: center;
 
   /* Smooth transition to bottom right with different colors */
   /* background-color: transparent; */
@@ -275,21 +276,23 @@ header {
   position: static;
 }
 
-
-/* Providing margin at top and bottom of the website body so that there is sufficient spacing at top and bottom */
-.main-div {
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-/* fixing the position of footer */
-footer {
-  background-color: rgba(201, 227, 211, 0.254);
-  position: fixed;
-}
-
 label {
+  font-size: medium;
+}
+.login-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
-    font-size: medium;
-    
+  height: 500px;
+}
+
+.home-page {
+  display: flex;
+}
+
+.root-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

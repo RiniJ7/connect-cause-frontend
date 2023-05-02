@@ -16,29 +16,18 @@ export function VolunteerSignupform(props) {
 
   const { userState, setUserState } = useContext(UserContext);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    const isValid = await login(username, password);
-    if (!isValid) {
-      setErrorMessage("Incorrect username or password");
-    } else {
-      navigate(-1);
-    }
-  };
-
   const signUpVolunteer = async (event) => {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
     try {
-      const response = await fetch("api/authenticate/volunteer/signup", {
+      const response = await fetch("/api/authenticate/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          firstName: userState.firstName,
-          lastName: userState.lastName,
           email: userState.email,
           password: password,
+          modelType: "Volunteer",
         }),
       });
       if (!response.ok) {
@@ -50,6 +39,7 @@ export function VolunteerSignupform(props) {
         // console.log("response data is: ", volunteerData);
         // console.log(`token is ${volunteerData.token}`);
         setUserState({ ...userState, token: volunteerData.token });
+        navigate("/profile/volunteer");
       }
     } catch (error) {
       console.log(error.message);
@@ -62,7 +52,7 @@ export function VolunteerSignupform(props) {
       <form className="form" onSubmit={signUpVolunteer}>
         <h3>{props.title}</h3>
         <br />
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="name">First Name:</label>
           <input
             type="text"
@@ -71,9 +61,7 @@ export function VolunteerSignupform(props) {
             name="name"
             value={userState.firstName}
             required
-            onChange={(e) =>
-              setUserState({ ...userState, firstName: e.target.value })
-            }
+            onChange={(e) => setUserState({ ...userState, firstName: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -85,11 +73,9 @@ export function VolunteerSignupform(props) {
             name="lastName"
             value={userState.lastName}
             required
-            onChange={(e) =>
-              setUserState({ ...userState, lastName: e.target.value })
-            }
+            onChange={(e) => setUserState({ ...userState, lastName: e.target.value })}
           />
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -99,9 +85,7 @@ export function VolunteerSignupform(props) {
             name="email"
             value={userState.email}
             required
-            onChange={(e) =>
-              setUserState({ ...userState, email: e.target.value })
-            }
+            onChange={(e) => setUserState({ ...userState, email: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -135,9 +119,6 @@ export function VolunteerSignupform(props) {
           {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
         </div>
       </form>
-      {userState.token != null && (
-        <Navigate to="/profile/volunteer" replace={true} />
-      )}
     </div>
   );
 }
