@@ -4,19 +4,16 @@ import { useAuth } from "../providers/AuthProvider";
 
 const Authenticated = (props) => {
   const { children } = props;
-  const { user, loading } = useAuth();
+  const { user, setLoading } = useAuth();
   if (loading) {
     console.log("loading");
 
     return <div>Loading...</div>;
   }
   if (!user) {
-    console.log("before");
-    loading = false;
+    console.log("Authenticated: Did not log in");
     return <Navigate to="/" />;
   } else {
-    console.log("after");
-
     return children;
   }
 };
