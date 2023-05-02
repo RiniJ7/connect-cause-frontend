@@ -64,7 +64,7 @@ export function CompanySigninForm(props) {
         </div>
         <div className="form-group">
           <Button className="form-submit-btn" type="submit" title="submit">
-            Sign In
+            Login
           </Button>
           <br />
           <p>

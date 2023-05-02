@@ -26,6 +26,7 @@ export default function RootLayout() {
       navigate("/");
     }
   };
+
   return (
     <div className="root-layout">
       <header>
@@ -38,6 +39,11 @@ export default function RootLayout() {
               {user && (
                 <Button variant="outlined" onClick={handleLogout}>
                   Logout
+                </Button>
+              )}
+              {!user && (
+                <Button variant="outlined" component={Link} to="/login">
+                  Login
                 </Button>
               )}
               <Button variant="outlined" component={Link} to="/">
