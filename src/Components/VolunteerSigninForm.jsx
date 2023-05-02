@@ -10,7 +10,7 @@ export function VolunteerSigninForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const { userState, setUserState } = useContext(UserContext);
 
   const handleLogin = async (e) => {

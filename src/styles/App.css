@@ -46,6 +46,7 @@ nav-buttons {
 
 main {
   display: flex;
+  flex-direction: column;
   flex: auto;
   justify-content: center;
 

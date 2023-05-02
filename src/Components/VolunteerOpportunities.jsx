@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 const VolunteerOpportunities = () => {
   // Define state variables using the useState hook
-  const [opportunities, setOpportunities] = useState([]);
-  const [selectedOpportunity, setSelectedOpportunity] = useState(null);
-  const [interestedInOpportunities, setInterestedInOpportunities] = useState([]);
+  const [opportunities, setOpportunities] = useState([]); //all opportunities in our database
+  const [selectedOpportunity, setSelectedOpportunity] = useState(null); // from the volunteer's selected interests on their profile
+  const [interestedInOpportunities, setInterestedInOpportunities] = useState([]); //finding matches, and displaying them in this useState variable
 
   // Fetch data from the server using the useEffect hook
   useEffect(() => {
@@ -46,9 +46,7 @@ const VolunteerOpportunities = () => {
         <div key={opportunity._id}>
           <h2>{opportunity.position_name}</h2>
           <p>{opportunity.description}</p>
-          <button onClick={() => viewOpportunityDetails(opportunity)}>
-            View Details
-          </button>
+          <button onClick={() => viewOpportunityDetails(opportunity)}>View Details</button>
         </div>
       );
     });
