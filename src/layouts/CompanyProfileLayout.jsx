@@ -8,10 +8,10 @@ export const CompanyProfileLayout = () => {
     <div className="company-profile-layout">
       <h2>{firstName}'s Profile</h2>
       <p>This is a paragraph tag inside the CompanyProfileLayout file</p>
-      <nav>
+      {/* <nav>
         <NavLink to="Opportunities">View Companying Opportunities</NavLink>
-      </nav>
-
+      </nav> */}{" "}
+      {/*  this should be on the navbar */}
       <Outlet />
     </div>
   );

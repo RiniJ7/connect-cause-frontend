@@ -12,8 +12,8 @@ import { Button } from "@mui/material";
 import "../styles/App.css";
 
 export default function LoginPage(props) {
-  const [VolunteerSignInForm, setVolunteerSignInSelected] = useState(false);
-  const [VolunteerSignUpForm, setVolunteerSignUpSelected] = useState(true);
+  const [VolunteerSignInForm, setVolunteerSignInSelected] = useState(true);
+  const [VolunteerSignUpForm, setVolunteerSignUpSelected] = useState(false);
   const [CompanySignInForm, setCompanySignInSelected] = useState(false);
   const [CompanySignUpForm, setCompanySignUpSelected] = useState(true);
   const [volunteerLoginPage, setVolunteerLogin] = useState(true);
@@ -53,7 +53,6 @@ export default function LoginPage(props) {
               )}
               {VolunteerSignInForm == true && volunteerLoginPage == true && (
                 <VolunteerSigninForm
-                  setLoginToken={props.setLoginToken}
                   title="Volunteer Sign In"
                   setSignupSelected={setVolunteerSignUpSelected}
                   setSigninSelected={setVolunteerSignInSelected}
@@ -62,7 +61,6 @@ export default function LoginPage(props) {
 
               {VolunteerSignUpForm == true && volunteerLoginPage == true && (
                 <VolunteerSignupform
-                  setLoginToken={props.setLoginToken}
                   title="Volunteer Signup"
                   setSignupSelected={setVolunteerSignUpSelected}
                   setSigninSelected={setVolunteerSignInSelected}
@@ -70,7 +68,6 @@ export default function LoginPage(props) {
               )}
               {CompanySignInForm == true && companyLoginPage == true && (
                 <CompanySigninForm
-                  setLoginToken={props.setLoginToken}
                   title="Company Sign In"
                   setSignupSelected={setCompanySignUpSelected}
                   setSigninSelected={setCompanySignInSelected}
@@ -79,7 +76,6 @@ export default function LoginPage(props) {
 
               {CompanySignUpForm == true && companyLoginPage == true && (
                 <CompanySignupform
-                  setLoginToken={props.setLoginToken}
                   title="Company Signup"
                   setSignupSelected={setCompanySignUpSelected}
                   setSigninSelected={setCompanySignInSelected}
