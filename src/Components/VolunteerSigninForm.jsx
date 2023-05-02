@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Button, ButtonGroup, Stack } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import { UserContext } from "../context/UserContext";
 import { useAuth } from "../providers/AuthProvider";
@@ -13,39 +13,19 @@ export function VolunteerSigninForm(props) {
   const { login } = useAuth();
   const { userState, setUserState } = useContext(UserContext);
 
-  const volunteer = {
-    email,
-    password,
-  };
-
-  const signInVolunteer = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await fetch("api/authenticate/volunteer/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(volunteer),
-      });
-      if (!response.ok) {
-        console.log("You encountered an error");
-        const error = await response.json();
-        setErrorMessage(error.message);
-      } else {
-        const userData = await response.json();
-
-        console.log("response data is: ", userData);
-        setUserState({ ...userState, token: userData.token });
-      }
-    } catch (error) {
-      console.log(error.message);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const isValid = await login(email, password);
+    if (!isValid) {
+      setErrorMessage("Incorrect username or password");
+    } else {
+      navigate("/profile/volunteer");
     }
   };
 
   return (
     <div className="form-container">
-      <form className="form" onSubmit={signInVolunteer}>
+      <form className="form" onSubmit={handleLogin}>
         <h3>{props.title}</h3>
         <br />
         <div className="form-group">
