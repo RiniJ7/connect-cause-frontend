@@ -49,6 +49,7 @@ main {
   flex: auto;
   justify-content: center;
 
+  padding: 4rem;
   color: #ffddd2;
 }
 
@@ -272,12 +273,6 @@ textarea {
 
 header {
   position: static;
-}
-
-/* Providing margin at top and bottom of the website body so that there is sufficient spacing at top and bottom */
-.main-div {
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 
 label {
