@@ -131,7 +131,6 @@ Button {
   /* Display on top of the other */
   flex-direction: column;
   /* Display horizontally at the center */
-  align-items: center;
 
   /* Smooth transition to bottom right with different colors */
   /* background-color: transparent; */
@@ -275,7 +274,6 @@ header {
   position: static;
 }
 
-
 /* Providing margin at top and bottom of the website body so that there is sufficient spacing at top and bottom */
 .main-div {
   margin-top: 100px;
@@ -289,7 +287,5 @@ footer {
 }
 
 label {
-
-    font-size: medium;
-    
+  font-size: medium;
 }
