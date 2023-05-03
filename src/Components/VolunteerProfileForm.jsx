@@ -57,6 +57,7 @@ export default function VolunteerProfileForm(props) {
   };
 
   return (
+    <div className="width-style">
     <div className="profilepage-container">
       <main>
         <div>
@@ -146,6 +147,7 @@ export default function VolunteerProfileForm(props) {
           </div>
         </div>
       </main>
+    </div>
     </div>
   );
 }
