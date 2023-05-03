@@ -17,12 +17,14 @@ const AuthProvider = (props) => {
       body: JSON.stringify({ email, password }),
     });
     if (userResponse.ok) {
+      console.log("this is the userResponse: ", userResponse);
       const userData = await userResponse.json();
       setUser(userData);
       // set the token to a cookie
 
       return true;
     } else {
+      console.log("userResponse wasn't ok apparently");
       setUser(null);
       return false;
     }
