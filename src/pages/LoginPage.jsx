@@ -12,17 +12,17 @@ import { Button } from "@mui/material";
 import "../styles/App.css";
 
 export default function LoginPage(props) {
-  const [VolunteerSignInForm, setVolunteerSignInSelected] = useState(false);
-  const [VolunteerSignUpForm, setVolunteerSignUpSelected] = useState(true);
-  const [CompanySignInForm, setCompanySignInSelected] = useState(false);
-  const [CompanySignUpForm, setCompanySignUpSelected] = useState(true);
+  const [VolunteerSignInForm, setVolunteerSignInSelected] = useState(true);
+  const [VolunteerSignUpForm, setVolunteerSignUpSelected] = useState(false);
+  const [CompanySignInForm, setCompanySignInSelected] = useState(true);
+  const [CompanySignUpForm, setCompanySignUpSelected] = useState(false);
   const [volunteerLoginPage, setVolunteerLogin] = useState(true);
   const [companyLoginPage, setCompanyLogin] = useState(false);
 
   return (
     <div>
       <main className="content">
-        <div className="body">
+        <div className="login-page">
           <div>
             <h3>Your next volunteering opportunity is here</h3>
           </div>
@@ -34,10 +34,12 @@ export default function LoginPage(props) {
                   variant="outlined"
                   onClick={() => {
                     setCompanyLogin(true);
+                    setCompanySignInSelected(true);
+                    setCompanySignUpSelected(false);
                     setVolunteerLogin(false);
                   }}
                 >
-                  Company Login
+                  Go To Company Login
                 </Button>
               )}
               {companyLoginPage == true && (
@@ -46,15 +48,17 @@ export default function LoginPage(props) {
                   onClick={() => {
                     setCompanyLogin(false);
                     setVolunteerLogin(true);
+                    setVolunteerSignInSelected(true);
+                    setVolunteerSignUpSelected(false);
                   }}
                 >
-                  Volunteer Login
+                  Go To Volunteer Login
                 </Button>
               )}
+
               {VolunteerSignInForm == true && volunteerLoginPage == true && (
                 <VolunteerSigninForm
-                  setLoginToken={props.setLoginToken}
-                  title="Volunteer Sign In"
+                  title="Volunteer Login"
                   setSignupSelected={setVolunteerSignUpSelected}
                   setSigninSelected={setVolunteerSignInSelected}
                 />
@@ -62,16 +66,14 @@ export default function LoginPage(props) {
 
               {VolunteerSignUpForm == true && volunteerLoginPage == true && (
                 <VolunteerSignupform
-                  setLoginToken={props.setLoginToken}
-                  title="Volunteer Signup"
+                  title="Volunteer Sign Up"
                   setSignupSelected={setVolunteerSignUpSelected}
                   setSigninSelected={setVolunteerSignInSelected}
                 />
               )}
               {CompanySignInForm == true && companyLoginPage == true && (
                 <CompanySigninForm
-                  setLoginToken={props.setLoginToken}
-                  title="Company Sign In"
+                  title="Company Login"
                   setSignupSelected={setCompanySignUpSelected}
                   setSigninSelected={setCompanySignInSelected}
                 />
@@ -79,8 +81,7 @@ export default function LoginPage(props) {
 
               {CompanySignUpForm == true && companyLoginPage == true && (
                 <CompanySignupform
-                  setLoginToken={props.setLoginToken}
-                  title="Company Signup"
+                  title="Company Sign Up"
                   setSignupSelected={setCompanySignUpSelected}
                   setSigninSelected={setCompanySignInSelected}
                 />
