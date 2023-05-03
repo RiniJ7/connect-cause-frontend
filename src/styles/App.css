@@ -24,6 +24,10 @@ div#content p {
   padding: 0 1em;
 }
 
+p {
+    margin-bottom: 1em;
+  }
+
 nav {
   height: 4rem;
   width: 100%;
@@ -53,6 +57,10 @@ main {
   padding: 4rem;
   color: #ffddd2;
 }
+
+.center-align {
+    text-align: center;
+  }
 
 footer {
   display: flex;
