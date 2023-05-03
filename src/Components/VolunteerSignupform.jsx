@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../providers/AuthProvider.jsx";
@@ -10,10 +10,10 @@ export function VolunteerSignupform(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
   const navigate = useNavigate();
   const { login, user } = useAuth();
-
-  const { userState, setUserState } = useContext(UserContext);
 
   const signUpVolunteer = async (event) => {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
@@ -24,7 +24,7 @@ export function VolunteerSignupform(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: userState.email,
+          email: user.email,
           password: password,
           modelType: "Volunteer",
         }),
@@ -37,14 +37,14 @@ export function VolunteerSignupform(props) {
         const volunteerData = await response.json();
         // console.log("response data is: ", volunteerData);
         // console.log(`token is ${volunteerData.token}`);
-        setUserState({ ...userState, token: volunteerData.token });
+        setUser({ ...user, token: volunteerData.token });
         navigate("/profile/volunteer");
       }
     } catch (error) {
       console.log(error.message);
     }
   };
-  console.log("user context", userState);
+  console.log("user context", user);
 
   return (
     <div className="form-container">
@@ -82,9 +82,9 @@ export function VolunteerSignupform(props) {
             id="email"
             placeholder="Enter your email"
             name="email"
-            value={userState.email}
+            value={user.email}
             required
-            onChange={(e) => setUserState({ ...userState, email: e.target.value })}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
           />
         </div>
         <div className="form-group">

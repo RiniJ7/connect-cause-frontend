@@ -28,6 +28,9 @@ import HomePage from "./pages/HomePage.jsx";
 import InterestedVolunteeringOpportunities from "./Components/InterestedVolunteeringOpportunities.jsx";
 import VolunteerOpportunities from "./Components/VolunteerOpportunities.jsx";
 
+
+// to manipulate the components of material UI to our choice
+//createTheme lets user to modify default material UI theme
 const theme = createTheme({
   palette: {
     primary: {
@@ -73,6 +76,7 @@ const theme = createTheme({
   },
 });
 
+//defining the routes for accessing different pages
 function App() {
   const { logout, user } = useAuth();
 
@@ -82,8 +86,9 @@ function App() {
         <>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
+
           <Route path="" element={<Authenticated />}>
-            {/* <Authenticated> */}
+            {/* <Authenticated>: Any links below this will have to be "logged in" to access */}
             <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
               <Route path="" element={<VolunteerProfilePage />} />
             </Route>
