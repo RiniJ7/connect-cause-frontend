@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+// using the <Link> element under react router dom to navigate to another page by clicking on it
 export default function ErrorPage() {
     return (
         <div id="error-page">
