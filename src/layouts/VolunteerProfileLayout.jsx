@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
-import { UserContext } from "../context/UserContext";
-import { Outlet, NavLink } from "react-router-dom";
+import React from "react";
+import { useAuth } from "../providers/AuthProvider";
+import { Outlet } from "react-router-dom";
 
 export const VolunteerProfileLayout = () => {
-  const { userState, setUserState } = useContext(UserContext);
+  const { user, setUser } = useAuth();
   return (
     <div className="volunteer-profile-layout">
-      <h2>Volunteer Profile</h2>
+      <h1>{user.firstName} - Volunteer Profile</h1>
       <p>This is a paragraph tag inside the VolunteerProfileLayout file</p>
       {/* <nav>
         <NavLink to="/opportunities">View Volunteering Opportunities</NavLink>

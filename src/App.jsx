@@ -82,20 +82,20 @@ function App() {
         <>
           <Route index element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
-          {/* <Route element={<Authenticated />}> */}
-          {/* <Authenticated> */}
-          <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-            <Route element={<VolunteerProfilePage />} />
+          <Route path="" element={<Authenticated />}>
+            {/* <Authenticated> */}
+            <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
+              <Route path="" element={<VolunteerProfilePage />} />
+            </Route>
+            <Route path="profile/company" element={<CompanyProfileLayout />}>
+              <Route />
+            </Route>
+            <Route path="opportunities" element={<OpportunitiesLayout />}>
+              <Route index element={<InterestedVolunteeringOpportunities />} />
+              <Route path="volunteer" element={<VolunteerOpportunities />} />
+            </Route>
+            {/* </Authenticated> */}
           </Route>
-          <Route path="profile/company" element={<CompanyProfileLayout />}>
-            <Route />
-          </Route>
-          <Route path="opportunities" element={<OpportunitiesLayout />}>
-            <Route element={<InterestedVolunteeringOpportunities />} />
-            <Route path="volunteer" element={<VolunteerOpportunities />} />
-          </Route>
-          {/* </Authenticated> */}
-          {/* </Route> */}
         </>
         <Route path="help" element={<HelpLayout />}>
           <Route path="faq" element={<Faq />} />
