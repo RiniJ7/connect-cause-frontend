@@ -6,7 +6,7 @@
 
 div#container {
     position: relative;
-    margin: 0;
+    margin: 15px;
 
     height: auto !important;
     height: 100vh;
@@ -23,8 +23,12 @@ div#content {
 }
 div#content p {
     text-align: justify;
-    padding: 0 1em;
+    padding: 1em;
 }
+
+p {
+    margin-bottom: 1em;
+  }
 
 nav {
     height: 4rem;
@@ -33,7 +37,7 @@ nav {
     left: 0px;
 
     background-color: rgba(0, 0, 0, 0.125);
-    color: #e29578;
+    color: #6534da;
 
     display: flex;
     flex-direction: row;
@@ -42,7 +46,7 @@ nav {
 nav-buttons {
     display: flex;
     flex-direction: row;
-    margin: 5px;
+    margin: 15px;
     background-color: rgba(227, 3, 3, 0.838);
 }
 
@@ -52,6 +56,10 @@ main {
     min-height: 100vh;
     color: #ffddd2;
 }
+
+.center-align {
+    text-align: center;
+  }
 
 footer {
     display: flex;
@@ -67,7 +75,7 @@ footer {
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.125);
-    color: #e29578;
+    color: #17879b;
     font-size: 75%;
     padding-bottom: 0cap;
     height: fit-content;
@@ -161,7 +169,7 @@ Button {
     /** Visible color **/
     color: black;
     /** Bottom space between it and the input form **/
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 .form-group input[type="text"],
@@ -179,7 +187,7 @@ textarea {
     /** Medium font **/
     font-size: 16px;
     /** Visible color **/
-    color: white;
+    color: rgb(3, 1, 1);
     /** Dark background with some opacity **/
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -209,11 +217,11 @@ textarea {
     padding: 0.5em;
     will-change: filter;
     transition: filter 300ms;
-    font-family: "Orelo SemiWide Heavy";
+    font-family: "Times New Roman";
     font-size: xx-large;
 }
 .logo:hover {
-    filter: drop-shadow(0 0 0.08em #e29578);
+    filter: drop-shadow(0 0 0.08em #0a0300);
 }
 .logo.react:hover {
     filter: drop-shadow(0 0 0.5em #73fb61d0);
@@ -236,16 +244,14 @@ textarea {
 
 .card {
     padding: 0.2em;
-    text-align: right;
+    text-align: center;
     background-color: rgb(124, 227, 181);
     border: 1px solid white;
     flex: 1;
 }
 
 .read-the-docs {
-    color: hsl(0, 56%, 94%);
+    color: hsl(0, 90%, 4%);
 }
 
-.home-page {
-    display: flex;
-}
+
