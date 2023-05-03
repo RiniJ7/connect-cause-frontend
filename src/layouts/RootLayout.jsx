@@ -4,7 +4,6 @@ import { useAuth } from "../providers/AuthProvider";
 import "../styles/App.css";
 import { Button } from "@mui/material";
 import { FullscreenExit } from "@mui/icons-material";
-import { UserContext } from "../context/UserContext.jsx";
 
 // const HomeRef = React.forwardRef((props, ref) => (
 //   <div ref={ref}>

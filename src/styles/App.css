@@ -133,6 +133,7 @@ Button {
   /* Display on top of the other */
   flex-direction: column;
   /* Display horizontally at the center */
+  justify-items: center;
 
   /* Smooth transition to bottom right with different colors */
   /* background-color: transparent; */
@@ -214,6 +215,13 @@ textarea {
   font-family: "Orelo SemiWide Heavy";
   font-size: xx-large;
 }
+
+.loading-text {
+  font-family: "Orelo SemiWide Heavy";
+  font-size: xx-large;
+  color: #e29578;
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 0.08em #e29578);
 }
@@ -282,13 +290,17 @@ label {
 .login-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
-  height: 500px;
+  justify-content: end;
+  flex-wrap: wrap;
 }
 
 .home-page {
   display: flex;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
 }
 
 .root-layout {

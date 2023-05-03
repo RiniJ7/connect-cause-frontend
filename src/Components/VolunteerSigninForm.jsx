@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { UserContext } from "../context/UserContext";
 import { useAuth } from "../providers/AuthProvider";
 
 export function VolunteerSigninForm(props) {
@@ -10,8 +9,7 @@ export function VolunteerSigninForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login, user } = useAuth();
-  const { userState, setUserState } = useContext(UserContext);
+  const { login, user, setUser } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();

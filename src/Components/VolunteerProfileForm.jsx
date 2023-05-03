@@ -1,23 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "../styles/App.css";
 import { Button } from "@mui/material";
-import { UserContext } from "../context/UserContext.jsx";
 import { AllInterests } from "./Interests.jsx";
+import { useAuth } from "../providers/AuthProvider";
 
 export default function VolunteerProfileForm(props) {
   //setting initial state of the error message and profile page fields to empty string
-  const { userState, setUserState } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [profilePicture, setProfilePicture] = useState("");
+  const { user, setUser } = useAuth();
 
   const userProfile = {
-    _id: userState._id,
-    firstName: userState.firstName,
-    lastName: userState.lastName,
+    _id: user._id,
+    firstName: user.firstName,
+    lastName: user.lastName,
     aboutMe,
     linkedIn,
     profilePicture,

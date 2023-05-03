@@ -1,7 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-import { UserContext } from "../context/UserContext.jsx";
 import { useAuth } from "../providers/AuthProvider.jsx";
 
 import { Button } from "@mui/material";
@@ -12,7 +11,7 @@ export function VolunteerSignupform(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
 
   const { userState, setUserState } = useContext(UserContext);
 
