@@ -24,7 +24,7 @@ export function VolunteerSignupform(props) {
         body: JSON.stringify({
           email: email,
           password: password,
-          modelType: "Volunteer",
+          modelType: "volunteer",
         }),
       });
       if (!response.ok) {
@@ -35,7 +35,7 @@ export function VolunteerSignupform(props) {
         const volunteerData = await response.json();
         // console.log("response data is: ", volunteerData);
         // console.log(`token is ${volunteerData.token}`);
-        setUser({ ...user, setUser: volunteerData.token });
+        setUser(volunteerData);
         navigate("/profile/volunteer");
       }
     } catch (error) {
@@ -43,7 +43,6 @@ export function VolunteerSignupform(props) {
     }
   };
   console.log("user context", user);
-  setUser;
   return (
     <div className="form-container">
       <form className="form" onSubmit={signUpVolunteer}>
