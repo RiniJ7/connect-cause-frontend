@@ -22,6 +22,7 @@ export default function VolunteerProfileForm(props) {
     linkedIn,
     profilePicture,
   };
+  console.log(user.userType.firstName)
 
   const createUserProfile = async (event) => {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
@@ -134,7 +135,7 @@ export default function VolunteerProfileForm(props) {
             <Button
               className="form-submit-btn"
               type="submit"
-              onClick={(x) => setStateUserToken(stateUserToken)}
+              onClick={createUserProfile}
             >
               Submit your profile
             </Button>

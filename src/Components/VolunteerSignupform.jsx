@@ -10,7 +10,6 @@ export function VolunteerSignupform(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
   const { login, user, setUser } = useAuth();
