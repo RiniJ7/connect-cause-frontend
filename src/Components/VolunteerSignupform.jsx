@@ -8,12 +8,12 @@ import "../styles/App.css";
 
 export function VolunteerSignupform(props) {
   const [errorMessage, setErrorMessage] = useState("");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
-  const { login, user } = useAuth();
+  const { login, user, setUser } = useAuth();
 
   const signUpVolunteer = async (event) => {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
@@ -24,9 +24,9 @@ export function VolunteerSignupform(props) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: user.email,
+          email: email,
           password: password,
-          modelType: "Volunteer",
+          modelType: "volunteer",
         }),
       });
       if (!response.ok) {
@@ -37,7 +37,7 @@ export function VolunteerSignupform(props) {
         const volunteerData = await response.json();
         // console.log("response data is: ", volunteerData);
         // console.log(`token is ${volunteerData.token}`);
-        setUser({ ...user, token: volunteerData.token });
+        setUser(volunteerData);
         navigate("/profile/volunteer");
       }
     } catch (error) {
@@ -45,7 +45,6 @@ export function VolunteerSignupform(props) {
     }
   };
   console.log("user context", user);
-
   return (
     <div className="form-container">
       <form className="form" onSubmit={signUpVolunteer}>
@@ -58,9 +57,9 @@ export function VolunteerSignupform(props) {
             id="name"
             placeholder="Enter your first name"
             name="name"
-            value={userState.firstName}
+            value={user.setUser}
             required
-            onChange={(e) => setUserState({ ...userState, firstName: e.target.value })}
+            onChange={(e) => setUser({ ...user, setUser: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -70,9 +69,9 @@ export function VolunteerSignupform(props) {
             id="lastName"
             placeholder="Enter your last name"
             name="lastName"
-            value={userState.lastName}
+            value={user.setUser}
             required
-            onChange={(e) => setUserState({ ...userState, lastName: e.target.value })}
+            onChange={(e) => setUser({ ...user, setUser: e.target.value })}
           />
         </div> */}
         <div className="form-group">
@@ -82,9 +81,9 @@ export function VolunteerSignupform(props) {
             id="email"
             placeholder="Enter your email"
             name="email"
-            value={user.email}
+            value={email}
             required
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-group">

@@ -1,30 +1,31 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../providers/AuthProvider.jsx";
+
+import { Button } from "@mui/material";
 import "../styles/App.css";
-import { Button, ButtonGroup, Stack } from "@mui/material";
 
 export function CompanySignupform(props) {
   const [errorMessage, setErrorMessage] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const company = {
-    firstName,
-    lastName,
-    email,
-    password,
-  };
+  const navigate = useNavigate();
+  const { login, user, setUser } = useAuth();
 
   const signUpCompany = async (event) => {
     event.preventDefault(); //prevents from rerouting to /? (legacy functionality for sending form data in browsers)
     try {
-      const response = await fetch("/api/authenticate/signup/company", {
+      const response = await fetch("/api/authenticate/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(company),
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          modelType: "company",
+        }),
       });
       if (!response.ok) {
         console.log("You encountered an error");
@@ -32,8 +33,10 @@ export function CompanySignupform(props) {
         setErrorMessage(error.message);
       } else {
         const companyData = await response.json();
-        console.log("response data is: ", companyData);
-        props.setLoggedInToken(companyData.token);
+        // console.log("response data is: ", volunteerData);
+        // console.log(`token is ${volunteerData.token}`);
+        setUser(companyData);
+        navigate("/profile/company");
       }
     } catch (error) {
       console.log(error.message);
@@ -45,15 +48,16 @@ export function CompanySignupform(props) {
       <form className="form" onSubmit={signUpCompany}>
         <h3>{props.title}</h3>
         <br />
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="name">First Name:</label>
           <input
             type="text"
             id="name"
             placeholder="Enter your first name"
             name="name"
+            value={user.setUser}
             required
-            onChange={(event) => setFirstName(event.target.value)}
+            onChange={(e) => setUser({ ...user, setUser: e.target.value })}
           />
         </div>
         <div className="form-group">
@@ -63,10 +67,11 @@ export function CompanySignupform(props) {
             id="lastName"
             placeholder="Enter your last name"
             name="lastName"
+            value={user.setUser}
             required
-            onChange={(event) => setLastName(event.target.value)}
+            onChange={(e) => setUser({ ...user, setUser: e.target.value })}
           />
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
@@ -74,8 +79,9 @@ export function CompanySignupform(props) {
             id="email"
             placeholder="Enter your email"
             name="email"
+            value={email}
             required
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -85,6 +91,7 @@ export function CompanySignupform(props) {
             id="password"
             placeholder="Enter a password"
             name="password"
+            value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
           />

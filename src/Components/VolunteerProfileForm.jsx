@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/App.css";
 import { Button } from "@mui/material";
 import { AllInterests } from "./Interests.jsx";
@@ -14,10 +14,10 @@ export default function VolunteerProfileForm(props) {
   const [profilePicture, setProfilePicture] = useState("");
   const { user, setUser } = useAuth();
 
-  const userProfile = {
-    _id: user._id,
-    firstName: user.firstName,
-    lastName: user.lastName,
+  const volunteerProfileDetails = {
+    _id: user.userType,
+    firstName,
+    lastName,
     aboutMe,
     linkedIn,
     profilePicture,
@@ -28,11 +28,12 @@ export default function VolunteerProfileForm(props) {
     try {
       //fetch the one connect to the user profile
       const response = await fetch("api/volunteers/:_id", {
+        // const response = await fetch(`api/volunteers/:${_id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userProfile),
+        body: JSON.stringify(volunteerProfileDetails),
       });
       if (!response.ok) {
         console.log("You encountered an error");
@@ -42,13 +43,8 @@ export default function VolunteerProfileForm(props) {
         const newUserProfile = await response.json();
         console.log("response data is: ", newUserProfile);
         setUser({
-          firstName: newUserProfile.firstName,
-          lastName: newUserProfile.lastName,
-          aboutMe: newUserProfile.aboutMe,
-          linkedIn: newUserProfile.linkedIn,
-          profilePicture: newUserProfile.profilePicture,
-          interests: newUserProfile.lastName,
-          token: newUserProfile.token,
+          ...user,
+          newUserProfile,
         });
       }
     } catch (error) {
