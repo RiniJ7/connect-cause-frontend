@@ -36,9 +36,24 @@ export default function RootLayout() {
           <>
             <div style={{ display: "flex" }}>
               {user && (
-                <Button variant="outlined" onClick={handleLogout}>
-                  Logout
-                </Button>
+                <>
+                  <Button variant="outlined" component={Link} to="/opportunities">
+                    Opportunities
+                  </Button>
+                  {user.modelType == "volunteer" && (
+                    <Button variant="outlined" component={Link} to="/profile/volunteer">
+                      Profile Page
+                    </Button>
+                  )}
+                  {user.modelType == "company" && (
+                    <Button variant="outlined" component={Link} to="/profile/company">
+                      Logout
+                    </Button>
+                  )}
+                  <Button variant="outlined" onClick={handleLogout}>
+                    Logout
+                  </Button>
+                </>
               )}
               {!user && (
                 <Button variant="outlined" component={Link} to="/login">
