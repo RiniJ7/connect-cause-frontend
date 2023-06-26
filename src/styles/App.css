@@ -44,6 +44,13 @@ nav-buttons {
   background-color: rgba(227, 3, 3, 0.838);
 }
 
+.main-div {
+  display: flex;
+  flex-direction: row;
+  flex: auto;
+  justify-content: center;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -126,8 +133,7 @@ Button {
 .form-container {
   /* Entire page width */
   width: 100%;
-  
-  
+
   /* Entire page height */
   height: auto;
   /* Responsive layout */
@@ -156,7 +162,6 @@ Button {
   /** One element on top of the other **/
   flex-direction: column;
   align-items: center;
-
 }
 
 .form-group label {
@@ -286,7 +291,7 @@ label {
 .login-page {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
 
   height: 500px;
 }
@@ -301,8 +306,7 @@ label {
   min-height: 100vh;
 }
 
-
 /* defining the max width expansion of the sign in component */
 .width-style {
-  max-width: 750px; 
+  max-width: 750px;
 }

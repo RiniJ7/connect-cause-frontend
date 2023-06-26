@@ -20,12 +20,12 @@ export default function LoginPage(props) {
   const [companyLoginPage, setCompanyLogin] = useState(false);
 
   return (
-    <div>
+    <>
       <div className="login-page">
         <div>
           <h3>Your next volunteering opportunity is here</h3>
         </div>
-        <div className = "width-style">
+        <div className="width-style">
           <div>
             <br />
             {volunteerLoginPage == true && (
@@ -36,8 +36,7 @@ export default function LoginPage(props) {
                   setCompanySignInSelected(true);
                   setCompanySignUpSelected(false);
                   setVolunteerLogin(false);
-                }}
-              >
+                }}>
                 Go To Company Login
               </Button>
             )}
@@ -49,8 +48,7 @@ export default function LoginPage(props) {
                   setVolunteerLogin(true);
                   setVolunteerSignInSelected(true);
                   setVolunteerSignUpSelected(false);
-                }}
-              >
+                }}>
                 Go To Volunteer Login
               </Button>
             )}
@@ -88,6 +86,6 @@ export default function LoginPage(props) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
