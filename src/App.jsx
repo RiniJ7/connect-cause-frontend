@@ -28,7 +28,6 @@ import HomePage from "./pages/HomePage.jsx";
 import InterestedVolunteeringOpportunities from "./Components/InterestedVolunteeringOpportunities.jsx";
 import VolunteerOpportunities from "./Components/VolunteerOpportunities.jsx";
 
-
 // to manipulate the components of material UI to our choice
 //createTheme lets user to modify default material UI theme
 const theme = createTheme({
@@ -82,32 +81,68 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
+      <Route
+        path="/"
+        element={<RootLayout />}>
         <>
-          <Route index element={<HomePage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route
+            index
+            element={<HomePage />}
+          />
+          <Route
+            path="login"
+            element={<LoginPage />}
+          />
 
-          <Route path="" element={<Authenticated />}>
+          <Route
+            path=""
+            element={<Authenticated />}>
             {/* <Authenticated>: Any links below this will have to be "logged in" to access */}
-            <Route path="profile/volunteer" element={<VolunteerProfileLayout />}>
-              <Route path="" element={<VolunteerProfilePage />} />
+            <Route
+              path="profile/volunteer"
+              element={<VolunteerProfileLayout />}>
+              <Route
+                path=""
+                element={<VolunteerProfilePage />}
+              />
             </Route>
-            <Route path="profile/company" element={<CompanyProfileLayout />}>
+            <Route
+              path="profile/company"
+              element={<CompanyProfileLayout />}>
               <Route />
             </Route>
-            <Route path="opportunities" element={<OpportunitiesLayout />}>
-              <Route index element={<InterestedVolunteeringOpportunities />} />
-              <Route path="volunteer" element={<VolunteerOpportunities />} />
+            <Route
+              path="opportunities"
+              element={<OpportunitiesLayout />}>
+              <Route
+                index
+                element={<InterestedVolunteeringOpportunities />}
+              />
+              <Route
+                path="volunteer"
+                element={<VolunteerOpportunities />}
+              />
             </Route>
             {/* </Authenticated> */}
           </Route>
         </>
-        <Route path="help" element={<HelpLayout />}>
-          <Route path="faq" element={<Faq />} />
-          <Route path="contact" element={<Contact />} />
+        <Route
+          path="help"
+          element={<HelpLayout />}>
+          <Route
+            path="faq"
+            element={<Faq />}
+          />
+          <Route
+            path="contact"
+            element={<Contact />}
+          />
         </Route>
         {/* this is a catch-all for any pages that don't exist */}
-        <Route path="*" element={<ErrorPage />} />
+        <Route
+          path="*"
+          element={<ErrorPage />}
+        />
       </Route>
     )
   );

@@ -22,67 +22,68 @@ export default function LoginPage(props) {
   return (
     <>
       <div className="login-page">
-        <h3>Your next volunteering opportunity is here</h3>
+        <div>
+          <h3>Your next volunteering opportunity is here</h3>
+        </div>
+        <div>
+          <div>
+            <br />
+            {volunteerLoginPage == true && (
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  setCompanyLogin(true);
+                  setCompanySignInSelected(true);
+                  setCompanySignUpSelected(false);
+                  setVolunteerLogin(false);
+                }}>
+                Go To Company Login
+              </Button>
+            )}
+            {companyLoginPage == true && (
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  setCompanyLogin(false);
+                  setVolunteerLogin(true);
+                  setVolunteerSignInSelected(true);
+                  setVolunteerSignUpSelected(false);
+                }}>
+                Go To Volunteer Login
+              </Button>
+            )}
 
-        <div className="login-page">
-          <br />
-          {volunteerLoginPage == true && (
-            <Button
-              variant="outlined"
-              onClick={() => {
-                setCompanyLogin(true);
-                setCompanySignInSelected(true);
-                setCompanySignUpSelected(false);
-                setVolunteerLogin(false);
-              }}
-            >
-              Go To Company Login
-            </Button>
-          )}
-          {companyLoginPage == true && (
-            <Button
-              variant="outlined"
-              onClick={() => {
-                setCompanyLogin(false);
-                setVolunteerLogin(true);
-                setVolunteerSignInSelected(true);
-                setVolunteerSignUpSelected(false);
-              }}
-            >
-              Go To Volunteer Login
-            </Button>
-          )}
+            {VolunteerSignInForm == true && volunteerLoginPage == true && (
+              <VolunteerSigninForm
+                title="Volunteer Login"
+                setSignupSelected={setVolunteerSignUpSelected}
+                setSigninSelected={setVolunteerSignInSelected}
+              />
+            )}
 
-          {VolunteerSignInForm == true && volunteerLoginPage == true && (
-            <VolunteerSigninForm
-              title="Volunteer Login"
-              setSignupSelected={setVolunteerSignUpSelected}
-              setSigninSelected={setVolunteerSignInSelected}
-            />
-          )}
+            {VolunteerSignUpForm == true && volunteerLoginPage == true && (
+              <VolunteerSignupform
+                title="Volunteer Sign Up"
+                setSignupSelected={setVolunteerSignUpSelected}
+                setSigninSelected={setVolunteerSignInSelected}
+              />
+            )}
+            {CompanySignInForm == true && companyLoginPage == true && (
+              <CompanySigninForm
+                title="Company Login"
+                setSignupSelected={setCompanySignUpSelected}
+                setSigninSelected={setCompanySignInSelected}
+              />
+            )}
 
-          {VolunteerSignUpForm == true && volunteerLoginPage == true && (
-            <VolunteerSignupform
-              title="Volunteer Sign Up"
-              setSignupSelected={setVolunteerSignUpSelected}
-              setSigninSelected={setVolunteerSignInSelected}
-            />
-          )}
-          {CompanySignInForm == true && companyLoginPage == true && (
-            <CompanySigninForm
-              title="Company Login"
-              setSignupSelected={setCompanySignUpSelected}
-              setSigninSelected={setCompanySignInSelected}
-            />
-          )}
-
-          {CompanySignUpForm == true && companyLoginPage == true && (
-            <CompanySignupform
-              title="Company Sign Up"
-              setSignupSelected={setCompanySignUpSelected}
-              setSigninSelected={setCompanySignInSelected}
-            />
-          )}
+            {CompanySignUpForm == true && companyLoginPage == true && (
+              <CompanySignupform
+                title="Company Sign Up"
+                setSignupSelected={setCompanySignUpSelected}
+                setSigninSelected={setCompanySignInSelected}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>
